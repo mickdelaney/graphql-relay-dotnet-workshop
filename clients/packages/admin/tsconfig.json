@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "module": "esnext"
+  },
+  "include": [
+    "src"
+  ],
+  "paths": {
+    "generated/*": [
+      "../generated/*"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+# tye application configuration file
+# read all about it at https://github.com/dotnet/tye
+#
+# when you've given us a try, we'd love to know what you think:
+#    https://aka.ms/AA7q20u
+#
+name: nextgen
+services:
+- name: accountsapi
+  project: src/AccountsApi/AccountsApi.csproj
+  bindings:
+  - port: 5700
+- name: contentapi
+  project: src/ContentApi/ContentApi.csproj
+  bindings:
+  - port: 5701
+- name: gateway
+  project: src/Gateway/Gateway.csproj
+  bindings:
+  - port: 5702  
+- name: proxy
+  project: src/Proxy/Proxy.csproj
+  bindings:
+  - port: 5100  
