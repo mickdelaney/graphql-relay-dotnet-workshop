@@ -28,6 +28,7 @@ namespace NextGen.AccountsApi
                     .AddTypeExtension<PeopleMutations>()
                 .AddType<PersonType>()
                 .AddSorting()
+                .AddFiltering()
                 .EnableRelaySupport()
                 .AddDataLoader<PersonByIdDataLoader>()
                 .AddDiagnosticEventListener(sp =>

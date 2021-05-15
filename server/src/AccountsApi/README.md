@@ -1,9 +1,9 @@
 # DB
 
 ## Migrate To Latest 
-###= delete accounts.db, delete migration code 
-``dotnet ef migrations add Initial``
-``dotnet ef database update``
+###= delete accounts.db, delete migration code  
+``dotnet ef migrations add Initial``  
+``dotnet ef database update``  
 
 # GraphQL 
 
@@ -23,11 +23,17 @@ mutation AddSpeaker {
 
 ## queries
 
-~~~~
-query GetPeople {
-  people {
-    id
-    name
+~~~~ 
+  query {
+    people(order: { name: ASC }, where: { webSite: { eq: "gam.com" } }) {
+      edges {
+        cursor
+        node {
+          id
+          name
+          webSite
+        }
+      }
+    }
   }
-}
 ~~~~

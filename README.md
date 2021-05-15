@@ -4,8 +4,8 @@
 
 ### GraphQL Server Template  
 
-`` dotnet new -i HotChocolate.Templates.Server ``
-`` dotnet new graphql -n MyApi ``
+`` dotnet new -i HotChocolate.Templates.Server ``  
+`` dotnet new graphql -n MyApi ``  
 
 ## Client
 

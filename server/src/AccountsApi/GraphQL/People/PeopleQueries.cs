@@ -16,8 +16,9 @@ namespace NextGen.AccountsApi.GraphQL.People
     public class PeopleQueries
     {
         [UseAccountsDbContext]
-        [UseSorting]
         [UsePaging]
+        [UseFiltering]
+        [UseSorting]
         public IQueryable<Person> GetPeople
         (
             [ScopedService] 
