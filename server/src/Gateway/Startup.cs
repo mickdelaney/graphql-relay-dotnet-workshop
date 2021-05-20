@@ -1,6 +1,8 @@
 using System;
+using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StackExchange.Redis;
@@ -23,15 +25,38 @@ namespace Gateway
                 });
             });
 
-            services.AddHttpClient(Config.WellKnownSchemaNames.Accounts,
-                c => c.BaseAddress = new Uri("http://localhost:5700/graphql"));
-            services.AddHttpClient(Config.WellKnownSchemaNames.Content, 
-                c => c.BaseAddress = new Uri("http://localhost:5701/graphql"));
-
+            services.AddHttpClient(Config.WellKnownSchemaNames.Accounts, (sp, client) =>
+            {
+                var context = sp.GetRequiredService<IHttpContextAccessor>().HttpContext;
+                if (context.Request.Headers.ContainsKey("Authorization"))
+                {
+                    client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse
+                    (
+                        context.Request.Headers["Authorization"].ToString()
+                    );
+                }
+                client.BaseAddress = new Uri("http://localhost:5700/graphql");
+            });
+            
+            services.AddHttpClient(Config.WellKnownSchemaNames.Content, (sp, client) =>
+            {
+                var context = sp.GetRequiredService<IHttpContextAccessor>().HttpContext;
+                if (context.Request.Headers.ContainsKey("Authorization"))
+                {
+                    client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse
+                    (
+                        context.Request.Headers["Authorization"].ToString()
+                    );
+                }
+                client.BaseAddress = new Uri("http://localhost:5701/graphql");
+            });
+            
             services
+                .AddHttpContextAccessor()
                 .AddRouting()
                 .AddSingleton(ConnectionMultiplexer.Connect("elevate.redis.local:6379"))
                 .AddGraphQLServer()
+                .AddHttpRequestInterceptor<RequestInterceptor>()
                 .AddRemoteSchemasFromRedis("NextGen", sp => sp.GetRequiredService<ConnectionMultiplexer>());
         }
 
