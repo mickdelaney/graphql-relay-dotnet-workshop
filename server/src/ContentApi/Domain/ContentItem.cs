@@ -15,12 +15,17 @@ namespace ContentApi.Domain
         [StringLength(200)]
         public string Name { get; }
 
+        [Required]
+        [StringLength(200)]
+        public string Tag { get; }
+        
         public ContentItem() {}
-        public ContentItem(int id, int ownerId, string name)
+        public ContentItem(int id, int ownerId, string name, string tag)
         {
             Id = id;
             OwnerId = ownerId;
             Name = name;
+            Tag = tag;
         }
     }
 }

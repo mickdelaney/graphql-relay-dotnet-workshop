@@ -10,6 +10,7 @@
     <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="11.2.2" />
     <PackageReference Include="HotChocolate.Data" Version="11.2.2" />
     <PackageReference Include="HotChocolate.Stitching" Version="11.2.2" />
+    <PackageReference Include="HotChocolate.Stitching.Redis" Version="11.2.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
   </ItemGroup>
 

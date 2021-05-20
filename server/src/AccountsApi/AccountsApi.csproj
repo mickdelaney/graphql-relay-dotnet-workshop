@@ -11,6 +11,7 @@
     <PackageReference Include="HotChocolate.AspNetCore" Version="11.2.2" />
     <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="11.2.2" />
     <PackageReference Include="HotChocolate.Data" Version="11.2.2" />
+    <PackageReference Include="HotChocolate.Stitching.Redis" Version="11.2.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.5">
       <PrivateAssets>all</PrivateAssets>

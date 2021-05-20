@@ -4,7 +4,7 @@ namespace Gateway
     {
         public static class WellKnownSchemaNames 
         {
-            public const string Accounts = "accounts";
+            public const string Accounts = "Accounts";
             public const string Content = "Content";
         }
     }

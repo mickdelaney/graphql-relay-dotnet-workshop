@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StackExchange.Redis;
 
 namespace Gateway
 {
@@ -29,9 +30,9 @@ namespace Gateway
 
             services
                 .AddRouting()
+                .AddSingleton(ConnectionMultiplexer.Connect("elevate.redis.local:6379"))
                 .AddGraphQLServer()
-                .AddRemoteSchema(Config.WellKnownSchemaNames.Accounts)
-                .AddRemoteSchema(Config.WellKnownSchemaNames.Content);
+                .AddRemoteSchemasFromRedis("NextGen", sp => sp.GetRequiredService<ConnectionMultiplexer>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

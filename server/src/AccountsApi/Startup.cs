@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using NextGen.AccountsApi.Database;
 using NextGen.AccountsApi.GraphQL;
 using NextGen.AccountsApi.GraphQL.People;
+using StackExchange.Redis;
 
 namespace NextGen.AccountsApi
 {
@@ -21,6 +22,7 @@ namespace NextGen.AccountsApi
             
             services
                 .AddRouting()
+                .AddSingleton(ConnectionMultiplexer.Connect("elevate.redis.local:6379"))
                 .AddGraphQLServer()
                 .AddQueryType(d => d.Name("Query"))
                     .AddTypeExtension<PeopleQueries>()
@@ -38,7 +40,22 @@ namespace NextGen.AccountsApi
                 .AddDiagnosticEventListener(sp =>
                 {
                     return new MiniProfilerQueryLogger();
-                });
+                })
+                .InitializeOnStartup()
+                // We configure the publish definition
+                .PublishSchemaDefinition
+                (
+                    c => c
+                    // The name of the schema. This name should be unique
+                    .SetName("Accounts")
+                    .PublishToRedis
+                    (
+                        // The configuration name under which the schema should be published
+                        "NextGen",
+                        // The connection multiplexer that should be used for publishing
+                        sp => sp.GetRequiredService<ConnectionMultiplexer>()
+                    )
+                );
             
             services.AddErrorFilter<GraphQLErrorFilter>();
 

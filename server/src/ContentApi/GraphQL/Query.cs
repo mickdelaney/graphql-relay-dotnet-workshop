@@ -9,7 +9,8 @@ namespace ContentApi.GraphQL
         (
             id: 1,
             ownerId: 1,
-            name: "Details On The X-Wing"
+            name: "Details On The X-Wing",
+            tag: "starwars"
         );
     }
 }
