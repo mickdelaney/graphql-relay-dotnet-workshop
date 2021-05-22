@@ -14,5 +14,12 @@ namespace NextGen.AccountsApi.Database
         }
 
         public DbSet<Person> People { get; set; } = default!;
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Person>().HasKey(c => c.Id);
+        }
     }
 }

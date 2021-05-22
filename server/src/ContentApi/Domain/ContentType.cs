@@ -2,38 +2,29 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ContentApi.Domain
 {
-    public class ContentItem
+    public class ContentType
     {
         [Required]
         public int Id { get; set; }
         
-        [Required]
-        public ContentType ContentType { get; set; }
-
         [Required]
         public int OwnerId { get; set; }
         
         [Required]
         [StringLength(200)]
         public string Name { get; set; }
-
-        [Required]
-        [StringLength(200)]
-        public string Tag { get; set; }
-
-        public ContentItem() {}
-        public ContentItem(int ownerId, string name, string tag)
+        
+        public ContentType() {}
+        public ContentType(int ownerId, string name)
         {
             OwnerId = ownerId;
             Name = name;
-            Tag = tag;
         }
-        public ContentItem(int id, int ownerId, string name, string tag)
+        public ContentType(int id, int ownerId, string name)
         {
             Id = id;
             OwnerId = ownerId;
             Name = name;
-            Tag = tag;
         }
     }
 }

@@ -21,8 +21,8 @@ namespace NextGen.AccountsApi
             );
             
             services
+                .AddSingleton(ConnectionMultiplexer.Connect("localhost:6379"))
                 .AddRouting()
-                .AddSingleton(ConnectionMultiplexer.Connect("elevate.redis.local:6379"))
                 .AddGraphQLServer()
                 .AddQueryType(d => d.Name("Query"))
                     .AddTypeExtension<PeopleQueries>()
