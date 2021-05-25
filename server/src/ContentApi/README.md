@@ -60,15 +60,19 @@ mutation AddContentType {
 
 ~~~~ 
   query {
-    people(order: { name: ASC }, where: { webSite: { eq: "gam.com" } }) {
+   contentItem(order: { name: ASC }) {
       edges {
         cursor
         node {
           id
           name
-          webSite
+          tag
+          contentType {
+            name
+          }
         }
       }
-    }
+   }
   }
+
 ~~~~

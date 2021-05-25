@@ -1,0 +1,3 @@
+extend type ContentItem {
+    owner: Person @delegate(schema: "Accounts", path: "personByDbId(id: $fields:ownerId)")
+}

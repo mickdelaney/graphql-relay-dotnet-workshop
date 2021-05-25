@@ -48,14 +48,15 @@ namespace Gateway
                 }
                 client.BaseAddress = new Uri("http://localhost:5701/graphql");
             });
-            
+
             services
                 .AddHttpContextAccessor()
                 .AddRouting()
                 .AddSingleton(ConnectionMultiplexer.Connect("localhost:6379"))
                 .AddGraphQLServer()
                 .AddHttpRequestInterceptor<RequestInterceptor>()
-                .AddRemoteSchemasFromRedis("NextGen", sp => sp.GetRequiredService<ConnectionMultiplexer>());
+                .AddRemoteSchemasFromRedis("NextGen", sp => sp.GetRequiredService<ConnectionMultiplexer>())
+                .AddTypeExtensionsFromFile("./Stitching.graphql");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

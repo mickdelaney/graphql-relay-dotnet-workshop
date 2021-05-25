@@ -6,7 +6,7 @@ namespace Logging
     {
         public IError OnError(IError error)
         {
-            return error.WithMessage(error.Exception.Message);
+            return error.WithMessage(error.Message);
         }
     }
 }

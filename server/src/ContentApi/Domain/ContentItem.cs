@@ -8,6 +8,9 @@ namespace ContentApi.Domain
         public int Id { get; set; }
         
         [Required]
+        public int ContentTypeId { get; set; }
+        
+        [Required]
         public ContentType ContentType { get; set; }
 
         [Required]

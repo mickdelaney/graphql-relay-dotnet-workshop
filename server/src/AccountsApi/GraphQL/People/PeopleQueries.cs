@@ -6,6 +6,7 @@ using HotChocolate;
 using HotChocolate.Data;
 using HotChocolate.Types;
 using HotChocolate.Types.Relay;
+using Microsoft.EntityFrameworkCore;
 using NextGen.AccountsApi.Database;
 using NextGen.AccountsApi.Domain;
 using NextGen.AccountsApi.GraphQL.Core;
@@ -36,11 +37,23 @@ namespace NextGen.AccountsApi.GraphQL.People
             CancellationToken cancellationToken
         ) => dataLoader.LoadAsync(id, cancellationToken);
         
-        public async Task<IEnumerable<Person>> GetPersonByIdAsync
+        public async Task<IEnumerable<Person>> GetPeopleByIdAsync
         (
             [ID(nameof(Person))]int[] ids,
             PersonByIdDataLoader dataLoader,
             CancellationToken cancellationToken
         ) => await dataLoader.LoadAsync(ids, cancellationToken);
+
+        [UseAccountsDbContext]
+        public Task<Person> GetPersonByDbIdAsync
+        (
+            int id,
+            [ScopedService] 
+            AccountsDbContext context,
+            CancellationToken cancellationToken
+        )
+        {
+            return context.People.Where(p => p.Id == id).FirstOrDefaultAsync(cancellationToken);
+        }
     }
 }
