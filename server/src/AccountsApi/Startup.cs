@@ -20,7 +20,8 @@ namespace NextGen.AccountsApi
             services.AddPooledDbContextFactory<AccountsDbContext>(options => 
                 options.UseSqlite("Data Source=accounts.db")
             );
-            
+
+            services.AddAuthorization();
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {

@@ -15,6 +15,7 @@
     "test": "yarn run build"
   },
   "dependencies": {
+    "oidc-client": "^1.11.5"
   },
   "devDependencies": {
     "rimraf": "~3.0.2",

@@ -27,12 +27,13 @@ namespace Workshop.OIDC
             {
                 ClientId = "graphql.client",
                 ClientName = "React Client",
+                
                 AllowedGrantTypes = GrantTypes.Code,
                 RequireClientSecret = false,
 
-                RedirectUris =           { "https://localhost:5003/callback.html" },
-                PostLogoutRedirectUris = { "https://localhost:5003/index.html" },
-                AllowedCorsOrigins =     { "https://localhost:5003" },
+                RedirectUris =           { "http://localhost:5704" },
+                PostLogoutRedirectUris = { "http://localhost:5704" },
+                AllowedCorsOrigins =     { "http://localhost:5704" },
 
                 AllowedScopes =
                 {

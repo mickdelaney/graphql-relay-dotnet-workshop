@@ -1,5 +1,5 @@
 import graphql from "babel-plugin-relay/macro";
-import React, { FunctionComponent, useCallback } from "react";
+import React, { FunctionComponent, useCallback, useEffect } from "react";
 import { usePaginationFragment } from "react-relay";
 import { PeopleList_people$key } from "./__generated__/PeopleList_people.graphql";
 import { PersonRow } from "./PersonRow";
@@ -51,9 +51,11 @@ export const PeopleList: FunctionComponent<PeopleListProps> = (props) => {
 
   const { people } = data;
 
-  if(people?.__id) {
-    props.setId(people?.__id);
-  }
+  useEffect(() => {
+    if (people?.__id) {
+      props.setId(people?.__id);
+    }
+  }, [props, people]);
 
   const rows = people?.edges?.map((person) => {
     console.log(`person: ${JSON.stringify(person)}`);

@@ -18,8 +18,8 @@ namespace NextGen.AccountsApi.GraphQL.People
                 .Type<StringType>();
             descriptor
                 .Field(f => f.WebSite)
-                .Type<StringType>()
-                .Authorize();
+                .Type<StringType>();
+                //.Authorize();
         }
     }
 }
