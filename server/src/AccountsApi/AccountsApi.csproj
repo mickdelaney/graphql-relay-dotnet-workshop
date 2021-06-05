@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <AssemblyName>NextGen.AccountsApi</AssemblyName>
-    <RootNamespace>NextGen.AccountsApi</RootNamespace>
+    <AssemblyName>Workshop.AccountsApi</AssemblyName>
+    <RootNamespace>Workshop.AccountsApi</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +12,7 @@
     <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="11.2.2" />
     <PackageReference Include="HotChocolate.Data" Version="11.2.2" />
     <PackageReference Include="HotChocolate.Stitching.Redis" Version="11.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.6">
       <PrivateAssets>all</PrivateAssets>

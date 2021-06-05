@@ -10,6 +10,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proxy", "src\Proxy\Proxy.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "src\Core\Core.csproj", "{6FC6DF63-76CE-4AF6-8CA6-65BD29738337}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OIDC", "src\OIDC\OIDC.csproj", "{50BDB0DE-D667-4102-A349-C38BACB4E2B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{3DA4EC17-478B-4255-8901-66D431F8E46B}"
+ProjectSection(SolutionItems) = preProject
+	..\README.md = ..\README.md
+EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{9C3FF965-C945-4491-9F20-7AF956813E01}"
+ProjectSection(SolutionItems) = preProject
+	tye.yaml = tye.yaml
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +48,9 @@ Global
 		{6FC6DF63-76CE-4AF6-8CA6-65BD29738337}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FC6DF63-76CE-4AF6-8CA6-65BD29738337}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FC6DF63-76CE-4AF6-8CA6-65BD29738337}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50BDB0DE-D667-4102-A349-C38BACB4E2B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50BDB0DE-D667-4102-A349-C38BACB4E2B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50BDB0DE-D667-4102-A349-C38BACB4E2B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50BDB0DE-D667-4102-A349-C38BACB4E2B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

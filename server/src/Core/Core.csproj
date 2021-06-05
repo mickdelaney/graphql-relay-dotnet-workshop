@@ -2,6 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <AssemblyName>Workshop.Core</AssemblyName>
+        <RootNamespace>Workshop.Core</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

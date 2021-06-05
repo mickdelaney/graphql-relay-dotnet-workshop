@@ -17,7 +17,11 @@ services:
 - name: gateway
   project: src/Gateway/Gateway.csproj
   bindings:
-  - port: 5702  
+  - port: 5702
+- name: oidc
+  project: src/OIDC/OIDC.csproj
+  bindings:
+  - port: 5703
 - name: proxy
   project: src/Proxy/Proxy.csproj
   bindings:

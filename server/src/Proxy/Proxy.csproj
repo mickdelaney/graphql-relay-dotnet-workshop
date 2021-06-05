@@ -2,6 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <AssemblyName>Workshop.Proxy</AssemblyName>
+        <RootNamespace>Workshop.Proxy</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

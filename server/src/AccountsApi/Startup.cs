@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using NextGen.AccountsApi.Database;
 using NextGen.AccountsApi.GraphQL;
 using NextGen.AccountsApi.GraphQL.People;
@@ -20,6 +21,17 @@ namespace NextGen.AccountsApi
                 options.UseSqlite("Data Source=accounts.db")
             );
             
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = "https://localhost:5703";
+
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateAudience = false
+                    };
+                });
+            
             services
                 .AddSingleton(ConnectionMultiplexer.Connect("localhost:6379"))
                 .AddRouting()
@@ -32,6 +44,7 @@ namespace NextGen.AccountsApi
                 .AddSorting()
                 .AddFiltering()
                 .EnableRelaySupport()
+                .AddAuthorization()
                 .AddDataLoader<PersonByIdDataLoader>()
                 .AddDiagnosticEventListener(sp =>
                 {
@@ -70,7 +83,10 @@ namespace NextGen.AccountsApi
             }
 
             app.UseRouting();
-
+            
+            app.UseAuthentication();
+            app.UseAuthorization();
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGraphQL();
