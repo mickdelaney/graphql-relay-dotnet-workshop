@@ -12,7 +12,8 @@ namespace Workshop.OIDC
     {
         public static IEnumerable<IdentityResource> IdentityResources => new IdentityResource[]
         { 
-            new IdentityResources.OpenId()
+            new IdentityResources.OpenId(),
+            new IdentityResources.Profile()
         };
 
         public static IEnumerable<ApiScope> ApiScopes => new []
@@ -31,7 +32,7 @@ namespace Workshop.OIDC
                 AllowedGrantTypes = GrantTypes.Code,
                 RequireClientSecret = false,
 
-                RedirectUris =           { "http://localhost:5704" },
+                RedirectUris =           { "http://localhost:5704/signin-oidc" },
                 PostLogoutRedirectUris = { "http://localhost:5704" },
                 AllowedCorsOrigins =     { "http://localhost:5704" },
 

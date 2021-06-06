@@ -34,7 +34,7 @@ async function fetchRelay(params: any, variables: any, _cacheConfig: any) {
     return token;
   };
 
-  const response = await fetch("http://localhost:5100/graphql", {
+  const response = await fetch("https://localhost:5100/graphql", {
     method: "POST",
     headers: {
       "Accept": "application/json",

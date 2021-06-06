@@ -33,7 +33,7 @@ namespace Gateway
                         context.Request.Headers["Authorization"].ToString()
                     );
                 }
-                client.BaseAddress = new Uri("http://localhost:5700/graphql");
+                client.BaseAddress = new Uri("https://localhost:5700/graphql");
             });
             
             services.AddHttpClient(Config.WellKnownSchemaNames.Content, (sp, client) =>
@@ -46,7 +46,7 @@ namespace Gateway
                         context.Request.Headers["Authorization"].ToString()
                     );
                 }
-                client.BaseAddress = new Uri("http://localhost:5701/graphql");
+                client.BaseAddress = new Uri("https://localhost:5701/graphql");
             });
 
             services
@@ -68,7 +68,6 @@ namespace Gateway
             }
 
             app.UseRouting();
-
             app.UseCors("default");
 
             app.UseEndpoints(endpoints =>

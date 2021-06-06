@@ -9,20 +9,30 @@ services:
 - name: accountsapi
   project: src/AccountsApi/AccountsApi.csproj
   bindings:
-  - port: 5700
+  - name: https
+    port: 5700
+    protocol: https
 - name: contentapi
   project: src/ContentApi/ContentApi.csproj
   bindings:
-  - port: 5701
+  - name: https 
+    port: 5701
+    protocol: https
 - name: gateway
   project: src/Gateway/Gateway.csproj
   bindings:
-  - port: 5702
+  - name: https 
+    port: 5702
+    protocol: https
 - name: oidc
   project: src/OIDC/OIDC.csproj
   bindings:
-  - port: 5703
+  - name: https 
+    port: 5703
+    protocol: https
 - name: proxy
   project: src/Proxy/Proxy.csproj
   bindings:
-  - port: 5100  
+  - name: https 
+    port: 5100
+    protocol: https

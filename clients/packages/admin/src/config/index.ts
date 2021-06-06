@@ -1,6 +1,7 @@
 export default {
-    responseType: 'id_token token',
+    response_type: "code",
+    scope:"openid profile accounts.api content.api",
     clientId: 'graphql.client',
-    authority: 'http://localhost:5703/core',
-    redirectUri: 'http://localhost:5704'
+    authority: 'https://localhost:5703',
+    redirectUri: 'http://localhost:5704/signin-oidc'
 };

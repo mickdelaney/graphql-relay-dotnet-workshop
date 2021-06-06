@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import graphql from "babel-plugin-relay/macro";
 import {
   RelayEnvironmentProvider,
@@ -80,10 +80,6 @@ export const App: FunctionComponent<{
             <CreatePerson peopleConnectionId={peopleConnectionId} />
           </section>
         </div>
-
-        <div>
-          <CurrentUser />
-        </div>
       </div>
     </div>
   );
@@ -100,8 +96,11 @@ export const AppRoot: FunctionComponent = () => {
                 <Route path="/signin-oidc">
                   <CurrentUser />
                 </Route>
-                <Route path="/">
+                <Route path="/app">
                   <App preloadedQuery={preloadedQuery} />
+                </Route>
+                <Route path="/">
+                  <Link to="/app">Go To App</Link>
                 </Route>
               </Switch>
             </div>

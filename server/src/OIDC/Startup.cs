@@ -25,6 +25,7 @@ namespace Workshop.OIDC
             {
                 // see https://identityserver4.readthedocs.io/en/latest/topics/resources.html
                 options.EmitStaticAudienceClaim = true;
+                //options.RequireHttpsMetadata = false;
             })
             .AddInMemoryIdentityResources(Config.IdentityResources)
             .AddInMemoryApiScopes(Config.ApiScopes)
@@ -43,16 +44,30 @@ namespace Workshop.OIDC
                     options.SaveTokens = true;
 
                     options.Authority = "http://localhost:5703/core";
+                    
                     options.ClientId = "interactive.confidential";
                     options.ClientSecret = "secret";
                     options.ResponseType = "code";
-
+                    
+                    options.RequireHttpsMetadata = false;
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         NameClaimType = "name",
                         RoleClaimType = "role"
                     };
                 });
+            
+            services.AddCors(options =>
+            {
+                // this defines a CORS policy called "default"
+                options.AddPolicy("default", policy =>
+                {
+                    policy
+                        .WithOrigins("http://localhost:5704")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
         }
 
         public void Configure(IApplicationBuilder app)
@@ -64,6 +79,8 @@ namespace Workshop.OIDC
            
             app.UseStaticFiles();
             app.UseRouting();
+
+            app.UseCors("default");
 
             app.UseIdentityServer();
             app.UseAuthorization();
