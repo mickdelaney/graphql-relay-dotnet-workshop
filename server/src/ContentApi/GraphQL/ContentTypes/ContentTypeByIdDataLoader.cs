@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using ContentApi.Database;
-using ContentApi.Domain;
 using GreenDonut;
 using HotChocolate.DataLoader;
 using Microsoft.EntityFrameworkCore;
+using Workshop.ContentApi.Database;
+using Workshop.ContentApi.Domain;
 
-namespace ContentApi.GraphQL.ContentTypes
+namespace Workshop.ContentApi.GraphQL.ContentTypes
 {
     public class ContentTypeByIdDataLoader : BatchDataLoader<int, ContentType>
     {

@@ -37,6 +37,14 @@ const PeronNameQuery = graphql`
   }
 `;
 
+const Home = () => {
+
+
+  return (
+      <div>Home</div>
+  )
+}
+
 const CurrentUser = () => {
   const auth = useAuth();
   if (auth && auth.userData) {

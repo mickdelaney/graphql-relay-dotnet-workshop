@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
 
 namespace Gateway
@@ -25,26 +26,40 @@ namespace Gateway
 
             services.AddHttpClient(Config.WellKnownSchemaNames.Accounts, (sp, client) =>
             {
+                var logger = sp.GetRequiredService<ILogger>();
                 var context = sp.GetRequiredService<IHttpContextAccessor>().HttpContext;
                 if (context.Request.Headers.ContainsKey("Authorization"))
                 {
+                    logger.LogInformation("Authorization Header Found & Forwarded");
+                    
                     client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse
                     (
                         context.Request.Headers["Authorization"].ToString()
                     );
+                }
+                else
+                {
+                    logger.LogWarning("No Authorization Header Found");
                 }
                 client.BaseAddress = new Uri("https://localhost:5700/graphql");
             });
             
             services.AddHttpClient(Config.WellKnownSchemaNames.Content, (sp, client) =>
             {
+                var logger = sp.GetRequiredService<ILogger>();
                 var context = sp.GetRequiredService<IHttpContextAccessor>().HttpContext;
                 if (context.Request.Headers.ContainsKey("Authorization"))
                 {
+                    logger.LogInformation("Authorization Header Found & Forwarded");
+                    
                     client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse
                     (
                         context.Request.Headers["Authorization"].ToString()
                     );
+                }
+                else
+                {
+                    logger.LogWarning("No Authorization Header Found");
                 }
                 client.BaseAddress = new Uri("https://localhost:5701/graphql");
             });

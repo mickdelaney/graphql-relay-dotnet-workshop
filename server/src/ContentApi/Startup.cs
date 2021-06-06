@@ -1,8 +1,3 @@
-using ContentApi.Database;
-using ContentApi.Domain;
-using ContentApi.GraphQL.ContentItems;
-using ContentApi.GraphQL.ContentTypes;
-using Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -10,8 +5,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
+using Workshop.ContentApi.Database;
+using Workshop.ContentApi.GraphQL.ContentItems;
+using Workshop.ContentApi.GraphQL.ContentTypes;
+using Workshop.Core;
 
-namespace ContentApi
+namespace Workshop.ContentApi
 {
     public class Startup
     {

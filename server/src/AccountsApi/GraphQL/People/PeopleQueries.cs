@@ -7,11 +7,11 @@ using HotChocolate.Data;
 using HotChocolate.Types;
 using HotChocolate.Types.Relay;
 using Microsoft.EntityFrameworkCore;
-using NextGen.AccountsApi.Database;
-using NextGen.AccountsApi.Domain;
-using NextGen.AccountsApi.GraphQL.Core;
+using Workshop.AccountsApi.Database;
+using Workshop.AccountsApi.Domain;
+using Workshop.AccountsApi.GraphQL.Core;
 
-namespace NextGen.AccountsApi.GraphQL.People
+namespace Workshop.AccountsApi.GraphQL.People
 {
     [ExtendObjectType(Name = "Query")]
     public class PeopleQueries

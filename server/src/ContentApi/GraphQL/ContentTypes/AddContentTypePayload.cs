@@ -1,7 +1,7 @@
-using ContentApi.Domain;
 using HotChocolate.Types.Pagination;
+using Workshop.ContentApi.Domain;
 
-namespace ContentApi.GraphQL.ContentTypes
+namespace Workshop.ContentApi.GraphQL.ContentTypes
 {
     public class AddContentTypePayload
     {

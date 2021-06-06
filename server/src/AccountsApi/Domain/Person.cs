@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace NextGen.AccountsApi.Domain
+namespace Workshop.AccountsApi.Domain
 {
     public class Person
     {

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NextGen.AccountsApi.Database;
+using Workshop.AccountsApi.Database;
 
 namespace NextGen.AccountsApi.Migrations
 {

@@ -2,15 +2,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using ContentApi.Database;
-using ContentApi.Domain;
-using ContentApi.GraphQL.Core;
 using HotChocolate;
 using HotChocolate.Data;
 using HotChocolate.Types;
 using HotChocolate.Types.Relay;
+using Workshop.ContentApi.Database;
+using Workshop.ContentApi.Domain;
+using Workshop.ContentApi.GraphQL.Core;
 
-namespace ContentApi.GraphQL.ContentItems
+namespace Workshop.ContentApi.GraphQL.ContentItems
 {
     [ExtendObjectType(Name = "Query")]
     public class ContentItemQueries

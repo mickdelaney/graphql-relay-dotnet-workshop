@@ -1,7 +1,7 @@
 using HotChocolate.Types.Pagination;
-using NextGen.AccountsApi.Domain;
+using Workshop.AccountsApi.Domain;
 
-namespace NextGen.AccountsApi.GraphQL.People
+namespace Workshop.AccountsApi.GraphQL.People
 {
     public class AddPersonPayload
     {

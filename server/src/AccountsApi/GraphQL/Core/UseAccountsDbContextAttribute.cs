@@ -1,10 +1,10 @@
 using System.Reflection;
-using Core;
 using HotChocolate.Types;
 using HotChocolate.Types.Descriptors;
-using NextGen.AccountsApi.Database;
+using Workshop.AccountsApi.Database;
+using Workshop.Core;
 
-namespace NextGen.AccountsApi.GraphQL.Core
+namespace Workshop.AccountsApi.GraphQL.Core
 {
     public class UseAccountsDbContextAttribute : ObjectFieldDescriptorAttribute
     {

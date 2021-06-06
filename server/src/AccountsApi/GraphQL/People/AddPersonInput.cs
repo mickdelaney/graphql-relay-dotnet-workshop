@@ -1,4 +1,4 @@
-namespace NextGen.AccountsApi.GraphQL.People
+namespace Workshop.AccountsApi.GraphQL.People
 {
     public record AddPersonInput
     (

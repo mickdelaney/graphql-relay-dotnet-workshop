@@ -1,8 +1,8 @@
 using HotChocolate.Resolvers;
 using HotChocolate.Types;
-using NextGen.AccountsApi.Domain;
+using Workshop.AccountsApi.Domain;
 
-namespace NextGen.AccountsApi.GraphQL.People
+namespace Workshop.AccountsApi.GraphQL.People
 {
     public class PersonType : ObjectType<Person>
     {
@@ -18,8 +18,8 @@ namespace NextGen.AccountsApi.GraphQL.People
                 .Type<StringType>();
             descriptor
                 .Field(f => f.WebSite)
-                .Type<StringType>();
-                //.Authorize();
+                .Type<StringType>()
+                .Authorize();
         }
     }
 }

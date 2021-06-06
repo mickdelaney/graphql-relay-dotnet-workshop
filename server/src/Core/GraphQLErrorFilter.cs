@@ -1,6 +1,6 @@
 using HotChocolate;
 
-namespace Logging
+namespace Workshop.Core
 {
     public class GraphQLErrorFilter : IErrorFilter
     {

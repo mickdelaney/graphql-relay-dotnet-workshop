@@ -1,4 +1,4 @@
-namespace ContentApi.GraphQL.ContentItems
+namespace Workshop.ContentApi.GraphQL.ContentItems
 {
     public record AddContentItemInput
     (

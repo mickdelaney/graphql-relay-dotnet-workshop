@@ -6,7 +6,7 @@ using HotChocolate.Execution;
 using HotChocolate.Execution.Instrumentation;
 using Microsoft.Extensions.Logging;
 
-namespace Logging
+namespace Workshop.Core
 {
     public class ConsoleQueryLogger : DiagnosticEventListener
     {

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ContentApi.Domain
+namespace Workshop.ContentApi.Domain
 {
     public class ContentType
     {

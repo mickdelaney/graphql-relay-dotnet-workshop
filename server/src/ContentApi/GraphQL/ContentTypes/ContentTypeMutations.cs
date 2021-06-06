@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
-using ContentApi.Database;
-using ContentApi.Domain;
-using ContentApi.GraphQL.Core;
 using HotChocolate;
 using HotChocolate.Types;
 using HotChocolate.Types.Pagination;
+using Workshop.ContentApi.Database;
+using Workshop.ContentApi.Domain;
+using Workshop.ContentApi.GraphQL.Core;
 
-namespace ContentApi.GraphQL.ContentTypes
+namespace Workshop.ContentApi.GraphQL.ContentTypes
 {
     [ExtendObjectType(Name = "Mutation")]
     public class ContentTypeMutations

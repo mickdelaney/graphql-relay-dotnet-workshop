@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using GreenDonut;
 using HotChocolate.DataLoader;
 using Microsoft.EntityFrameworkCore;
-using NextGen.AccountsApi.Database;
-using NextGen.AccountsApi.Domain;
+using Workshop.AccountsApi.Database;
+using Workshop.AccountsApi.Domain;
 
-namespace NextGen.AccountsApi.GraphQL.People
+namespace Workshop.AccountsApi.GraphQL.People
 {
     public class PersonByIdDataLoader : BatchDataLoader<int, Person>
     {

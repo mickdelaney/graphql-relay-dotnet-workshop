@@ -1,7 +1,7 @@
-﻿using ContentApi.Domain;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Workshop.ContentApi.Domain;
 
-namespace ContentApi.Database
+namespace Workshop.ContentApi.Database
 {
     public class ContentDbContext : DbContext
     {

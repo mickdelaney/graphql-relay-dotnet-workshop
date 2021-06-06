@@ -1,4 +1,3 @@
-using Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -6,12 +5,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using NextGen.AccountsApi.Database;
-using NextGen.AccountsApi.GraphQL;
-using NextGen.AccountsApi.GraphQL.People;
 using StackExchange.Redis;
+using Workshop.AccountsApi.Database;
+using Workshop.AccountsApi.GraphQL.People;
+using Workshop.Core;
 
-namespace NextGen.AccountsApi
+namespace Workshop.AccountsApi
 {
     public class Startup
     {
@@ -20,8 +19,9 @@ namespace NextGen.AccountsApi
             services.AddPooledDbContextFactory<AccountsDbContext>(options => 
                 options.UseSqlite("Data Source=accounts.db")
             );
+            
+            services.AddControllers();
 
-            services.AddAuthorization();
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
@@ -32,6 +32,27 @@ namespace NextGen.AccountsApi
                         ValidateAudience = false
                     };
                 });
+            
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("ApiScope", policy =>
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireClaim("scope", "accounts.api");
+                });
+            });
+            
+            services.AddCors(options =>
+            {
+                // this defines a CORS policy called "default"
+                options.AddPolicy("default", policy =>
+                {
+                    policy
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
             
             services
                 .AddSingleton(ConnectionMultiplexer.Connect("localhost:6379"))
@@ -85,11 +106,14 @@ namespace NextGen.AccountsApi
 
             app.UseRouting();
             
+            app.UseCors("default");
+
             app.UseAuthentication();
             app.UseAuthorization();
             
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers().RequireAuthorization("ApiScope");
                 endpoints.MapGraphQL();
             });
         }

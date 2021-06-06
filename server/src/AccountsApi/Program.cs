@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace NextGen.AccountsApi
+namespace Workshop.AccountsApi
 {
     public class Program
     {

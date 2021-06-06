@@ -1,4 +1,4 @@
-namespace ContentApi.GraphQL.ContentTypes
+namespace Workshop.ContentApi.GraphQL.ContentTypes
 {
     public record AddContentTypeInput
     (
