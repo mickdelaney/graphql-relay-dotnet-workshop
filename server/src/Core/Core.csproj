@@ -8,14 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="HotChocolate.AspNetCore" Version="11.2.2" />
       <PackageReference Include="HotChocolate.Execution" Version="11.2.2" />
       <PackageReference Include="HotChocolate.Types" Version="11.2.2" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.6" />
       <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="4.2.22" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Hotchocolate" />
     </ItemGroup>
 
 </Project>

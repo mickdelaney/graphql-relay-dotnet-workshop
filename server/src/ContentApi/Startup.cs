@@ -9,6 +9,7 @@ using Workshop.ContentApi.Database;
 using Workshop.ContentApi.GraphQL.ContentItems;
 using Workshop.ContentApi.GraphQL.ContentTypes;
 using Workshop.Core;
+using Workshop.Core.Hotchocolate;
 
 namespace Workshop.ContentApi
 {
@@ -24,6 +25,7 @@ namespace Workshop.ContentApi
                 .AddSingleton(ConnectionMultiplexer.Connect("workshop.local:6379"))
                 .AddRouting()
                 .AddGraphQLServer()
+                .AddHttpRequestInterceptor<UserContextInterceptor>()
                 .AddQueryType(d => d.Name("Query"))
                     .AddTypeExtension<ContentItemQueries>()
                     .AddTypeExtension<ContentTypeQueries>()

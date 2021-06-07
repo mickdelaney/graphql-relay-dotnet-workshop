@@ -8,12 +8,13 @@ namespace Workshop.AccountsApi.GraphQL.People
     {
         protected override void Configure(IObjectTypeDescriptor<Person> descriptor)
         {
-            descriptor.Authorize("people");
+            descriptor.Authorize("person");
             
             descriptor
                 .ImplementsNode()
                 .IdField(t => t.Id)
-                .ResolveNode((ctx, id) => ctx.DataLoader<PersonByIdDataLoader>().LoadAsync(id, ctx.RequestAborted));
+                .ResolveNode((ctx, id) => ctx.DataLoader<PersonByIdDataLoader>().LoadAsync(id, ctx.RequestAborted))
+                .Authorize("people");
 
             descriptor
                 .Field(f => f.Name)

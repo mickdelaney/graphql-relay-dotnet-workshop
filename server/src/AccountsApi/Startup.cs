@@ -12,6 +12,7 @@ using Workshop.AccountsApi.Authorization;
 using Workshop.AccountsApi.Database;
 using Workshop.AccountsApi.GraphQL.People;
 using Workshop.Core;
+using Workshop.Core.Hotchocolate;
 
 namespace Workshop.AccountsApi
 {
@@ -35,11 +36,15 @@ namespace Workshop.AccountsApi
                     };
                 });
 
-            services.AddSingleton<IAuthorizationHandler, PeopleAuthorizationHandler>(); 
+            services.AddSingleton<IAuthorizationHandler, PeopleAuthorizationHandler>();
+            services.AddSingleton<IAuthorizationHandler, PersonAuthorizationHandler>();
+            
+            services.AddSingleton<PeopleAuthorizationService>();
                 
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("people", policy => policy.Requirements.Add(new PeopleRequirement()));
+                options.AddPolicy("person", policy => policy.Requirements.Add(new PersonRequirement()));
                 
                 options.AddPolicy("ApiScope", policy =>
                 {
@@ -64,6 +69,7 @@ namespace Workshop.AccountsApi
                 .AddSingleton(ConnectionMultiplexer.Connect("workshop.local:6379"))
                 .AddRouting()
                 .AddGraphQLServer()
+                .AddHttpRequestInterceptor<UserContextInterceptor>()
                 .AddQueryType(d => d.Name("Query"))
                     .AddTypeExtension<PeopleQueries>()
                 .AddMutationType(d => d.Name("Mutation"))

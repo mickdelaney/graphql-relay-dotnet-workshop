@@ -58,8 +58,6 @@ export const PeopleList: FunctionComponent<PeopleListProps> = (props) => {
   }, [props, people]);
 
   const rows = people?.edges?.map((person) => {
-    console.log(`person: ${JSON.stringify(person)}`);
-
     return (
       <li className="flex items-center space-x-4" key={person.node.id}>
         <PersonRow person={person.node} callback={log} />

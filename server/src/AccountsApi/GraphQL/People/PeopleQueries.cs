@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using HotChocolate;
 using HotChocolate.Data;
+using HotChocolate.Resolvers;
 using HotChocolate.Types;
 using HotChocolate.Types.Relay;
 using Microsoft.EntityFrameworkCore;
@@ -23,9 +25,13 @@ namespace Workshop.AccountsApi.GraphQL.People
         public IQueryable<Person> GetPeople
         (
             [ScopedService] 
-            AccountsDbContext context
+            AccountsDbContext context,
+            IResolverContext resource
         )
         {
+            var user = resource.ContextData["User"];
+            
+            
             return context.People;
         }
        
