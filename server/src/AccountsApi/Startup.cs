@@ -1,4 +1,5 @@
 using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using StackExchange.Redis;
+using Workshop.AccountsApi.Authorization;
 using Workshop.AccountsApi.Database;
 using Workshop.AccountsApi.GraphQL.People;
 using Workshop.Core;
@@ -32,9 +34,13 @@ namespace Workshop.AccountsApi
                         ValidateAudience = false
                     };
                 });
-            
+
+            services.AddSingleton<IAuthorizationHandler, PeopleAuthorizationHandler>(); 
+                
             services.AddAuthorization(options =>
             {
+                options.AddPolicy("people", policy => policy.Requirements.Add(new PeopleRequirement()));
+                
                 options.AddPolicy("ApiScope", policy =>
                 {
                     policy.RequireAuthenticatedUser();

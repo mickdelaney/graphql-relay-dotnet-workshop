@@ -8,6 +8,8 @@ namespace Workshop.AccountsApi.GraphQL.People
     {
         protected override void Configure(IObjectTypeDescriptor<Person> descriptor)
         {
+            descriptor.Authorize("people");
+            
             descriptor
                 .ImplementsNode()
                 .IdField(t => t.Id)
@@ -18,8 +20,7 @@ namespace Workshop.AccountsApi.GraphQL.People
                 .Type<StringType>();
             descriptor
                 .Field(f => f.WebSite)
-                .Type<StringType>()
-                .Authorize();
+                .Type<StringType>();
         }
     }
 }
