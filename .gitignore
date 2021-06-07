@@ -2,3 +2,4 @@ node_modules
 *.db
 *.db-shm
 *.db-wal
+server/.idea/.idea.NextGen/.idea/dataSources/

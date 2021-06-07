@@ -39,7 +39,7 @@ async function fetchRelay(params: any, variables: any, _cacheConfig: any) {
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
-      "authorization": getToken(),
+      "authorization": `Bearer ${getToken()}`,
     },
     body: JSON.stringify({
       query: params.text,

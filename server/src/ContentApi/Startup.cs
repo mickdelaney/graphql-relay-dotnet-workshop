@@ -21,7 +21,7 @@ namespace Workshop.ContentApi
             );
             
             services
-                .AddSingleton(ConnectionMultiplexer.Connect("localhost:6379"))
+                .AddSingleton(ConnectionMultiplexer.Connect("workshop.local:6379"))
                 .AddRouting()
                 .AddGraphQLServer()
                 .AddQueryType(d => d.Name("Query"))

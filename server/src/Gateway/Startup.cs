@@ -26,7 +26,7 @@ namespace Gateway
 
             services.AddHttpClient(Config.WellKnownSchemaNames.Accounts, (sp, client) =>
             {
-                var logger = sp.GetRequiredService<ILogger>();
+                var logger = sp.GetRequiredService<ILogger<Startup>>();
                 var context = sp.GetRequiredService<IHttpContextAccessor>().HttpContext;
                 if (context.Request.Headers.ContainsKey("Authorization"))
                 {
@@ -46,7 +46,7 @@ namespace Gateway
             
             services.AddHttpClient(Config.WellKnownSchemaNames.Content, (sp, client) =>
             {
-                var logger = sp.GetRequiredService<ILogger>();
+                var logger = sp.GetRequiredService<ILogger<Startup>>();
                 var context = sp.GetRequiredService<IHttpContextAccessor>().HttpContext;
                 if (context.Request.Headers.ContainsKey("Authorization"))
                 {
@@ -67,7 +67,7 @@ namespace Gateway
             services
                 .AddHttpContextAccessor()
                 .AddRouting()
-                .AddSingleton(ConnectionMultiplexer.Connect("localhost:6379"))
+                .AddSingleton(ConnectionMultiplexer.Connect("workshop.local:6379"))
                 .AddGraphQLServer()
                 .AddHttpRequestInterceptor<RequestInterceptor>()
                 .AddRemoteSchemasFromRedis("NextGen", sp => sp.GetRequiredService<ConnectionMultiplexer>())

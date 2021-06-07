@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -26,7 +27,6 @@ namespace Workshop.AccountsApi
                 .AddJwtBearer("Bearer", options =>
                 {
                     options.Authority = "https://localhost:5703";
-
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateAudience = false
@@ -55,7 +55,7 @@ namespace Workshop.AccountsApi
             });
             
             services
-                .AddSingleton(ConnectionMultiplexer.Connect("localhost:6379"))
+                .AddSingleton(ConnectionMultiplexer.Connect("workshop.local:6379"))
                 .AddRouting()
                 .AddGraphQLServer()
                 .AddQueryType(d => d.Name("Query"))
