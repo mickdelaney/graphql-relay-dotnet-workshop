@@ -22,7 +22,7 @@ namespace Workshop.AccountsApi.Authorization
         )
         {
             var person = resource.Parent<Person>();
-
+            
             context.Succeed(requirement);
             
             return Task.CompletedTask;

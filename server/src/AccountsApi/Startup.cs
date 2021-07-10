@@ -66,7 +66,7 @@ namespace Workshop.AccountsApi
             });
             
             services
-                .AddSingleton(ConnectionMultiplexer.Connect("workshop.local:6379"))
+                .AddSingleton(ConnectionMultiplexer.Connect("localhost:6379"))
                 .AddRouting()
                 .AddGraphQLServer()
                 .AddHttpRequestInterceptor<UserContextInterceptor>()

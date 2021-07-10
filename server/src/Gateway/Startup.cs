@@ -67,7 +67,7 @@ namespace Gateway
             services
                 .AddHttpContextAccessor()
                 .AddRouting()
-                .AddSingleton(ConnectionMultiplexer.Connect("workshop.local:6379"))
+                .AddSingleton(ConnectionMultiplexer.Connect("localhost:6379"))
                 .AddGraphQLServer()
                 .AddHttpRequestInterceptor<RequestInterceptor>()
                 .AddRemoteSchemasFromRedis("NextGen", sp => sp.GetRequiredService<ConnectionMultiplexer>())
