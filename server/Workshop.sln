@@ -20,6 +20,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{9C3FF965-C945-4491-9F20-7AF956813E01}"
 ProjectSection(SolutionItems) = preProject
 	tye.yaml = tye.yaml
+	Directory.Build.targets = Directory.Build.targets
+	Directory.Build.props = Directory.Build.props
+	global.json = global.json
+	NuGet.config = NuGet.config
 EndProjectSection
 EndProject
 Global

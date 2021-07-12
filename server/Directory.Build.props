@@ -1,0 +1,30 @@
+<Project>
+  <PropertyGroup>
+    <Authors>mick delaney</Authors>
+    <Company>mick delaney</Company>
+    <Title>$(MSBuildProjectName)</Title>
+    <Description>$(MSBuildProjectName)</Description>
+    <PackageProjectUrl>http://mickdelaney.com</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/mickdelaney/graphql-relay-dotnet-workshop</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>$(Version)</FileVersion>
+    <UserSecretsId>c4c5f8e9-daa0-4fb8-b658-b2f7dc9b433d</UserSecretsId>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>1591</NoWarn>
+    <PlatformCompatIgnore>macOS</PlatformCompatIgnore>
+    <WarnOnPackingNonPackableProject>false</WarnOnPackingNonPackableProject>
+  </PropertyGroup>
+
+  <!-- Add these to every project -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.DotNet.Analyzers.Compatibility" Version="0.2.12-alpha" PrivateAssets="All" />
+  </ItemGroup>
+</Project>

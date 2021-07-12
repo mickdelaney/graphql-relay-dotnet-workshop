@@ -2,6 +2,13 @@
 
 ## Server
 
+### Migrations
+
+``
+dotnet ef database update --project src/Elevate.Workflow.Cli/Elevate.Workflow.Cli.csproj --context WorkflowContext
+``
+
+
 ### GraphQL Server Template  
 
 `` dotnet new -i HotChocolate.Templates.Server ``  

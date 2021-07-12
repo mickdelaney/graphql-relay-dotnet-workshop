@@ -3,6 +3,7 @@ using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -11,7 +12,17 @@ using StackExchange.Redis;
 namespace Gateway
 {
     public class Startup
-    {
+    {  
+        IWebHostEnvironment Environment { get; }
+
+        IConfiguration Configuration { get; }
+
+        public Startup(IWebHostEnvironment environment, IConfiguration configuration)
+        {
+            Environment = environment;
+            Configuration = configuration;
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(options =>
@@ -67,7 +78,10 @@ namespace Gateway
             services
                 .AddHttpContextAccessor()
                 .AddRouting()
-                .AddSingleton(ConnectionMultiplexer.Connect("localhost:6379"))
+                .AddSingleton((container) =>
+                {
+                    return ConnectionMultiplexer.Connect(Configuration.GetConnectionString("redis"));
+                })
                 .AddGraphQLServer()
                 .AddHttpRequestInterceptor<RequestInterceptor>()
                 .AddRemoteSchemasFromRedis("NextGen", sp => sp.GetRequiredService<ConnectionMultiplexer>())

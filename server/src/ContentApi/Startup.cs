@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -15,14 +16,32 @@ namespace Workshop.ContentApi
 {
     public class Startup
     {
+        IWebHostEnvironment Environment { get; }
+
+        IConfiguration Configuration { get; }
+
+        public Startup(IWebHostEnvironment environment, IConfiguration configuration)
+        {
+            Environment = environment;
+            Configuration = configuration;
+        }
+        
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddPooledDbContextFactory<ContentDbContext>(options => 
-                options.UseSqlite("Data Source=content.db")
+                options.UseNpgsql(Configuration.GetConnectionString("postgres"))
             );
             
+            services.AddStackExchangeRedisCache(o =>
+            {
+                o.Configuration = Configuration.GetConnectionString("redis");
+            });
+
             services
-                .AddSingleton(ConnectionMultiplexer.Connect("localhost:6379"))
+                .AddSingleton((container) =>
+                {
+                    return ConnectionMultiplexer.Connect(Configuration.GetConnectionString("redis"));
+                })
                 .AddRouting()
                 .AddGraphQLServer()
                 .AddHttpRequestInterceptor<UserContextInterceptor>()
@@ -81,6 +100,17 @@ namespace Workshop.ContentApi
             {
                 endpoints.MapGraphQL();
             });
+          
+            TryRunMigrations(app);
+        }
+        
+        void TryRunMigrations(IApplicationBuilder app)
+        {
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<ContentDbContext>();
+                db.Database.MigrateAsync();
+            }
         }
     }
 }

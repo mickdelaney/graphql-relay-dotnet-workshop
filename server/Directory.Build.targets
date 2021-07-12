@@ -1,0 +1,28 @@
+<Project>
+
+  <PropertyGroup>
+    <HCVersion>11.3.1</HCVersion>
+    <EfCoreVersion>5.0.7</EfCoreVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GraphQL.PreProcessingExtensions" Version="11.2.1" />
+    <PackageReference Include="HotChocolate.Execution" Version="$(HCVersion)" />
+    <PackageReference Include="HotChocolate.Types" Version="$(HCVersion)" />
+    <PackageReference Include="HotChocolate.AspNetCore" Version="$(HCVersion)" />
+    <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="$(HCVersion)" />
+    <PackageReference Include="HotChocolate.Data" Version="$(HCVersion)" />
+    <PackageReference Include="HotChocolate.Stitching" Version="$(HCVersion)" />
+    <PackageReference Include="HotChocolate.Stitching.Redis" Version="$(HCVersion)" />
+
+    <PackageReference Include="EFCore.NamingConventions" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="$(EfCoreVersion)" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="$(EfCoreVersion)" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="$(EfCoreVersion)">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+
+  </ItemGroup>
+
+</Project>
