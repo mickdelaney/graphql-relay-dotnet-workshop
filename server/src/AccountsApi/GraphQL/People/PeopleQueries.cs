@@ -1,12 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using HotChocolate;
-using HotChocolate.Data;
 using HotChocolate.Resolvers;
-using HotChocolate.Types;
 using HotChocolate.Types.Relay;
 using Microsoft.EntityFrameworkCore;
 using Workshop.AccountsApi.Database;
@@ -15,13 +12,9 @@ using Workshop.AccountsApi.GraphQL.Core;
 
 namespace Workshop.AccountsApi.GraphQL.People
 {
-    [ExtendObjectType(Name = "Query")]
     public class PeopleQueries
     {
-        [UseAccountsDbContext]
-        [UsePaging]
-        [UseFiltering]
-        [UseSorting]
+        [GraphQLName("people")]
         public IQueryable<Person> GetPeople
         (
             [ScopedService] 
@@ -30,8 +23,6 @@ namespace Workshop.AccountsApi.GraphQL.People
         )
         {
             var user = resource.ContextData["User"];
-            
-            
             return context.People;
         }
        

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Workshop.Core
+namespace Workshop.Core.Hotchocolate
 {
     public static class ObjectFieldDescriptorExtensions
     {

@@ -24,6 +24,7 @@ ProjectSection(SolutionItems) = preProject
 	Directory.Build.props = Directory.Build.props
 	global.json = global.json
 	NuGet.config = NuGet.config
+	docker-compose.yaml = docker-compose.yaml
 EndProjectSection
 EndProject
 Global

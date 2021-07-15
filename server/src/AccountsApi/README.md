@@ -10,15 +10,24 @@
 ## mutation 
 
 ~~~~
-mutation AddSpeaker {
+
+mutation AddPerson {
     addPerson(input: {
-      name: "Speaker Name"
+      clientMutationId: "abc",
+      name: "mick delaney",
+      webSite: "mickdelaney.com"
     }) {
+    clientMutationId
     person {
+      node {
         id
+        name
+        webSite
       }
     }
+  }
 }
+
 ~~~~
 
 ## queries

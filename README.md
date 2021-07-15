@@ -5,7 +5,13 @@
 ### Migrations
 
 ``
-dotnet ef database update --project src/Elevate.Workflow.Cli/Elevate.Workflow.Cli.csproj --context WorkflowContext
+dotnet ef migrations add MIGRATION_NAME --project src/AccountsApi/AccountsApi.csproj --context AccountsDbContext
+dotnet ef database update --project src/AccountsApi/AccountsApi.csproj --context AccountsDbContext
+
+
+dotnet ef migrations add MIGRATION_NAME --project src/ContentApi/ContentApi.csproj --context ContentDbContext
+dotnet ef database update --project src/ContentApi/ContentApi.csproj --context ContentDbContext
+
 ``
 
 

@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
+using Workshop.Core.Config;
 
 namespace Gateway
 {
@@ -78,10 +79,7 @@ namespace Gateway
             services
                 .AddHttpContextAccessor()
                 .AddRouting()
-                .AddSingleton((container) =>
-                {
-                    return ConnectionMultiplexer.Connect(Configuration.GetConnectionString("redis"));
-                })
+                .AddSingleton(_ => ConnectionMultiplexer.Connect(WorkshopConfig.RedisConnectionString))
                 .AddGraphQLServer()
                 .AddHttpRequestInterceptor<RequestInterceptor>()
                 .AddRemoteSchemasFromRedis("NextGen", sp => sp.GetRequiredService<ConnectionMultiplexer>())

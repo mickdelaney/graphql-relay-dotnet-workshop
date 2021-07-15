@@ -7,7 +7,7 @@ using HotChocolate.Execution.Instrumentation;
 using HotChocolate.Language;
 using StackExchange.Profiling;
 
-namespace Workshop.Core
+namespace Workshop.Core.Hotchocolate
 {
     public class MiniProfilerQueryLogger : DiagnosticEventListener
     {

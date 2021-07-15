@@ -10,6 +10,7 @@ using Workshop.ContentApi.Database;
 using Workshop.ContentApi.GraphQL.ContentItems;
 using Workshop.ContentApi.GraphQL.ContentTypes;
 using Workshop.Core;
+using Workshop.Core.Config;
 using Workshop.Core.Hotchocolate;
 
 namespace Workshop.ContentApi
@@ -29,19 +30,20 @@ namespace Workshop.ContentApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddPooledDbContextFactory<ContentDbContext>(options => 
-                options.UseNpgsql(Configuration.GetConnectionString("postgres"))
+                options.UseNpgsql(WorkshopConfig.PostgresConnectionString)
             );
+            //
+            // services.AddDbContext<ContentDbContext>(options => 
+            //     options.UseNpgsql(WorkshopConfig.PostgresConnectionString)
+            // , ServiceLifetime.Transient);
             
             services.AddStackExchangeRedisCache(o =>
             {
-                o.Configuration = Configuration.GetConnectionString("redis");
+                o.Configuration = WorkshopConfig.RedisConnectionString;
             });
 
             services
-                .AddSingleton((container) =>
-                {
-                    return ConnectionMultiplexer.Connect(Configuration.GetConnectionString("redis"));
-                })
+                .AddSingleton(_ => ConnectionMultiplexer.Connect(WorkshopConfig.RedisConnectionString))
                 .AddRouting()
                 .AddGraphQLServer()
                 .AddHttpRequestInterceptor<UserContextInterceptor>()
@@ -101,7 +103,7 @@ namespace Workshop.ContentApi
                 endpoints.MapGraphQL();
             });
           
-            TryRunMigrations(app);
+            // TryRunMigrations(app);
         }
         
         void TryRunMigrations(IApplicationBuilder app)

@@ -33,16 +33,3 @@ services:
   - name: https 
     port: 5100
     protocol: https
-- name: redis
-  image: redis
-  bindings:
-  - containerPort: 6379
-    connectionString: "${host}:${port}" 
-- name: postgres
-  image:  postgres
-  env:
-    - name: POSTGRES_PASSWORD
-  value: "pass@word1"
-  bindings:
-    - containerPort: 5432
-    connectionString: Server=${host};Port=${port};User Id=postgres;Password=${env:POSTGRES_PASSWORD};    

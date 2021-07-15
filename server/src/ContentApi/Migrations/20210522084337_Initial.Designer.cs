@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Workshop.ContentApi.Database;
 
-namespace ContentApi.Migrations
+namespace Workshop.ContentApi.Migrations
 {
     [DbContext(typeof(ContentDbContext))]
     [Migration("20210522084337_Initial")]

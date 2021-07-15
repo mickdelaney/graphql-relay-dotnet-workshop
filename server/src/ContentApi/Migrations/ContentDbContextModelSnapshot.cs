@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Workshop.ContentApi.Database;
 
-namespace ContentApi.Migrations
+namespace Workshop.ContentApi.Migrations
 {
     [DbContext(typeof(ContentDbContext))]
     partial class ContentDbContextModelSnapshot : ModelSnapshot

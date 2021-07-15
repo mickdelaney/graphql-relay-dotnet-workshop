@@ -19,7 +19,13 @@ namespace Workshop.AccountsApi.Database
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Person>().HasKey(c => c.Id);
+            modelBuilder
+                .Entity<Person>().HasKey(c => c.Id);
+            
+            modelBuilder
+                .Entity<Person>()
+                    .Property(c => c.Id)
+                    .ValueGeneratedOnAdd();
         }
     }
 }

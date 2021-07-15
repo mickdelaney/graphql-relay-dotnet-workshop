@@ -1,3 +1,4 @@
+using System;
 using System.Configuration;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -11,8 +12,10 @@ using Microsoft.IdentityModel.Tokens;
 using StackExchange.Redis;
 using Workshop.AccountsApi.Authorization;
 using Workshop.AccountsApi.Database;
+using Workshop.AccountsApi.Domain;
 using Workshop.AccountsApi.GraphQL.People;
 using Workshop.Core;
+using Workshop.Core.Config;
 using Workshop.Core.Hotchocolate;
 
 namespace Workshop.AccountsApi
@@ -32,9 +35,13 @@ namespace Workshop.AccountsApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddPooledDbContextFactory<AccountsDbContext>(options => 
-                options.UseNpgsql(Configuration.GetConnectionString("postgres"))
+                options.UseNpgsql(WorkshopConfig.PostgresConnectionString)
             );
             
+            // services.AddDbContext<AccountsDbContext>(options => 
+            //     options.UseNpgsql(WorkshopConfig.PostgresConnectionString)
+            // , ServiceLifetime.Transient);
+                
             services.AddControllers();
 
             services.AddAuthentication("Bearer")
@@ -78,22 +85,21 @@ namespace Workshop.AccountsApi
             
             services.AddStackExchangeRedisCache(o =>
             {
-                o.Configuration = Configuration.GetConnectionString("redis");
+                o.Configuration = WorkshopConfig.RedisConnectionString;
             });
             
             services
-                .AddSingleton((container) =>
-                {
-                    return ConnectionMultiplexer.Connect(Configuration.GetConnectionString("redis"));
-                })
+                .AddSingleton(_ => ConnectionMultiplexer.Connect(WorkshopConfig.RedisConnectionString))
                 .AddRouting()
                 .AddGraphQLServer()
                 .AddHttpRequestInterceptor<UserContextInterceptor>()
                 .AddQueryType(d => d.Name("Query"))
-                    .AddTypeExtension<PeopleQueries>()
                 .AddMutationType(d => d.Name("Mutation"))
                     .AddTypeExtension<PeopleMutations>()
                 .AddType<PersonType>()
+                .AddType<PersonFilterType>()
+                .AddType<PeopleQueriesType>()
+                .BindRuntimeType<Person, PersonFilterType>()
                 .AddSorting()
                 .AddFiltering()
                 .EnableRelaySupport()
@@ -148,7 +154,7 @@ namespace Workshop.AccountsApi
                 endpoints.MapGraphQL();
             });
             
-            TryRunMigrations(app);
+            // TryRunMigrations(app);
         }
         
         void TryRunMigrations(IApplicationBuilder app)
