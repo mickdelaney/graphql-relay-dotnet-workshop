@@ -15,7 +15,7 @@ import { CreatePerson } from "./CreatePerson";
 import PeopleList from "./PeopleList";
 
 import config from "./config";
-import { AuthProvider, useAuth } from "@mick/lib";
+import { AuthProvider, useAuth } from "@workshop/lib";
 import { User } from "oidc-client";
 
 const oidcConfig = {

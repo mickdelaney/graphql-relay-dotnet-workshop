@@ -1,19 +1,7 @@
 {
-  "name": "@mick/lib",
+  "name": "@workshop/lib",
   "version": "1.0.0",
-  "license": "MIT",
-  "main": "dist/index",
-  "types": "dist/index",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "yarn run clean && yarn run compile",
-    "clean": "rimraf -rf ./dist",
-    "compile": "tsc -p tsconfig.build.json",
-    "prepublishOnly": "yarn run build",
-    "test": "yarn run build"
-  },
+  "main": "src/index.ts",
   "dependencies": {
     "oidc-client": "^1.11.5"
   },

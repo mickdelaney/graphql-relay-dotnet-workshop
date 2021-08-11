@@ -9,5 +9,13 @@
     "composite": true,
     /* Specify file to store incremental compilation information */
     "tsBuildInfoFile": "./build/tsconfig.tsbuildinfo"
-  }
+  },
+  "references": [
+    { "path": "../candidate-accounts" },
+    { "path": "../recruit" },
+    { "path": "../lib" },
+    { "path": "../ui" }
+  ],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["src/**/*.spec.ts", "src/**/__tests__/**/*", "src/modules/*/fixture/*", "test/**/*"]
 }

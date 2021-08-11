@@ -2,12 +2,19 @@
   "extends": "../../tsconfig.shared.json",
   "compilerOptions": {
     /* Redirect output structure to the directory. */
-    "outDir": "./build/tsc",
+    "outDir": "./build/tsc-test",
     /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
-    "rootDir": "./src",
+    "rootDir": "./",
     /* Enable project compilation */
     "composite": true,
     /* Specify file to store incremental compilation information */
-    "tsBuildInfoFile": "./build/tsconfig.tsbuildinfo"
-  }
+    "tsBuildInfoFile": "./build/tsconfig.test.tsbuildinfo"
+  },
+  "references": [
+    { "path": "../candidate-accounts" },
+    { "path": "../recruit" },
+    { "path": "../lib" },
+    { "path": "../ui" }
+  ],
+  "include": ["./src/**/*", "./test/**/*"]
 }

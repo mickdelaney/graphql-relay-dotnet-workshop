@@ -1,5 +1,5 @@
 /* eslint-disable no-alert */
-import { meaningOfLife } from '@mick/lib';
+import { meaningOfLife } from '@workshop/lib';
 import React, { FunctionComponent } from "react";
 
 type Props = {
