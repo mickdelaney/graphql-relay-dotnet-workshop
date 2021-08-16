@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Workshop.AccountsApi.Domain
 {
-    [Table("people")]
+    [Table("people", Schema = "accounts")]
     public class Person
     {
         [Required]

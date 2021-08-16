@@ -2,6 +2,24 @@
 
 ## Server
 
+### Database
+
+```sql
+
+CREATE ROLE workshop WITH
+    SUPERUSER
+    CREATEDB
+    CREATEROLE
+    INHERIT
+    LOGIN
+    NOREPLICATION
+    NOBYPASSRLS
+    CONNECTION LIMIT UNLIMITED;
+
+CREATE DATABASE workshop OWNER workshop;
+```
+
+
 ### Migrations
 
 ``

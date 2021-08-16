@@ -1,7 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Workshop.ContentApi.Domain
 {
+    [Table("content_types", Schema = "content")]
     public class ContentType
     {
         [Required]

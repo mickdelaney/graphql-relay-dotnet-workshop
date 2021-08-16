@@ -1,12 +1,12 @@
 <Project>
 
   <PropertyGroup>
-    <HCVersion>11.3.1</HCVersion>
-    <EfCoreVersion>5.0.7</EfCoreVersion>
+    <HCVersion>11.3.4</HCVersion>
+    <EfCoreVersion>5.0.9</EfCoreVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GraphQL.PreProcessingExtensions" Version="11.2.1" />
+    <PackageReference Include="GraphQL.PreProcessingExtensions" Version="11.2.2" />
     <PackageReference Include="HotChocolate.Execution" Version="$(HCVersion)" />
     <PackageReference Include="HotChocolate.Types" Version="$(HCVersion)" />
     <PackageReference Include="HotChocolate.AspNetCore" Version="$(HCVersion)" />
@@ -16,8 +16,8 @@
     <PackageReference Include="HotChocolate.Stitching.Redis" Version="$(HCVersion)" />
 
     <PackageReference Include="EFCore.NamingConventions" Version="5.0.2" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="$(EfCoreVersion)" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="$(EfCoreVersion)" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="$(EfCoreVersion)">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

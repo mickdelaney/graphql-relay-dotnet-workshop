@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="4.2.22" />
+      <PackageReference Update="Microsoft.EntityFrameworkCore" Version="5.0.9" />
     </ItemGroup>
 
 </Project>
