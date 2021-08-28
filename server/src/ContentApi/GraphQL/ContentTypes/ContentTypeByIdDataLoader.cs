@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using GreenDonut;
-using HotChocolate.DataLoader;
 using Microsoft.EntityFrameworkCore;
 using Workshop.ContentApi.Database;
 using Workshop.ContentApi.Domain;
