@@ -3,6 +3,7 @@ import { meaningOfLife } from '@workshop/lib';
 import React, { FunctionComponent } from "react";
 
 type Props = {
+  onClick?: () => void;
 }
 
 export const Button: FunctionComponent<Props> = ({ children  }) => {
