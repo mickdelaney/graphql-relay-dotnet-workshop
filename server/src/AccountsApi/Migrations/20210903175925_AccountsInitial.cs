@@ -7,8 +7,12 @@ namespace Workshop.AccountsApi.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "accounts");
+
             migrationBuilder.CreateTable(
                 name: "people",
+                schema: "accounts",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
@@ -25,7 +29,8 @@ namespace Workshop.AccountsApi.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "people");
+                name: "people",
+                schema: "accounts");
         }
     }
 }

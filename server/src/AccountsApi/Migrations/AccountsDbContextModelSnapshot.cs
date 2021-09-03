@@ -15,7 +15,7 @@ namespace Workshop.AccountsApi.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.7")
+                .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             modelBuilder.Entity("Workshop.AccountsApi.Domain.Person", b =>
@@ -40,7 +40,7 @@ namespace Workshop.AccountsApi.Migrations
                     b.HasKey("Id")
                         .HasName("pk_people");
 
-                    b.ToTable("people");
+                    b.ToTable("people", "accounts");
                 });
 #pragma warning restore 612, 618
         }

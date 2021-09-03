@@ -15,6 +15,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{3DA4EC17-478B-4255-8901-66D431F8E46B}"
 ProjectSection(SolutionItems) = preProject
 	..\README.md = ..\README.md
+	..\DATABASE.md = ..\DATABASE.md
+	..\GRAPHQL.md = ..\GRAPHQL.md
 EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{9C3FF965-C945-4491-9F20-7AF956813E01}"
@@ -25,6 +27,7 @@ ProjectSection(SolutionItems) = preProject
 	global.json = global.json
 	NuGet.config = NuGet.config
 	docker-compose.yaml = docker-compose.yaml
+	migrate.sh = migrate.sh
 EndProjectSection
 EndProject
 Global

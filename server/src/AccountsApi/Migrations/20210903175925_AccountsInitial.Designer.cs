@@ -9,7 +9,7 @@ using Workshop.AccountsApi.Database;
 namespace Workshop.AccountsApi.Migrations
 {
     [DbContext(typeof(AccountsDbContext))]
-    [Migration("20210712133524_AccountsInitial")]
+    [Migration("20210903175925_AccountsInitial")]
     partial class AccountsInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,7 +17,7 @@ namespace Workshop.AccountsApi.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.7")
+                .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             modelBuilder.Entity("Workshop.AccountsApi.Domain.Person", b =>
@@ -42,7 +42,7 @@ namespace Workshop.AccountsApi.Migrations
                     b.HasKey("Id")
                         .HasName("pk_people");
 
-                    b.ToTable("people");
+                    b.ToTable("people", "accounts");
                 });
 #pragma warning restore 612, 618
         }

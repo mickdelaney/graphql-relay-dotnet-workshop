@@ -1,9 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Workshop.ContentApi.Database;
 using Workshop.Core.Config;
 
-namespace Workshop.ContentApi.Migrations
+namespace Workshop.ContentApi.Database
 {
     public class ContentDbContextFactory : IDesignTimeDbContextFactory<ContentDbContext>
     {
@@ -13,8 +12,11 @@ namespace Workshop.ContentApi.Migrations
             
             optionsBuilder.UseNpgsql
                 (
-                    WorkshopConfig.PostgresConnectionString,
-                    x => x.MigrationsAssembly(typeof(ContentDbContextFactory).Assembly.FullName)
+                    x =>
+                    {
+                        x.MigrationsAssembly(typeof(ContentDbContext).Assembly.FullName);
+                        x.MigrationsHistoryTable(WorkshopConfig.EfMigrationsTable, WorkshopConfig.ContentSchemaName);
+                    }
                 )
                 .UseSnakeCaseNamingConvention();
             
