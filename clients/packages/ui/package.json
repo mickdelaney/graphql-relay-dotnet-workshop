@@ -9,10 +9,10 @@
     "@workshop/lib": "^1.0.0"
   },
   "devDependencies": {
-    "@types/react": "~17.0.0",
-    "react": "~17.0.0",
-    "react-dom": "~17.0.0",
-    "@headlessui/react": "^1.4.0",
+    "@types/react": "~17.0.19",
+    "react": "^18.0.0-alpha-1314299c7-20210901",
+    "react-dom": "^18.0.0-alpha-1314299c7-20210901",
+    "@headlessui/react": "^1.4.1",
     "clsx": "^1.1.1"
   }
 }
