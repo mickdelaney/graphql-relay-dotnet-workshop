@@ -17,6 +17,9 @@ ProjectSection(SolutionItems) = preProject
 	..\README.md = ..\README.md
 	..\DATABASE.md = ..\DATABASE.md
 	..\GRAPHQL.md = ..\GRAPHQL.md
+	..\APPLICATION.md = ..\APPLICATION.md
+	..\WORKSHOP.md = ..\WORKSHOP.md
+	..\TYE.md = ..\TYE.md
 EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{9C3FF965-C945-4491-9F20-7AF956813E01}"
@@ -29,6 +32,8 @@ ProjectSection(SolutionItems) = preProject
 	docker-compose.yaml = docker-compose.yaml
 	migrate.sh = migrate.sh
 EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cli", "src\Cli\Cli.csproj", "{E0F9DC1B-3E0F-45C1-AF7F-4C63C070D434}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,5 +65,9 @@ Global
 		{50BDB0DE-D667-4102-A349-C38BACB4E2B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50BDB0DE-D667-4102-A349-C38BACB4E2B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50BDB0DE-D667-4102-A349-C38BACB4E2B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0F9DC1B-3E0F-45C1-AF7F-4C63C070D434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0F9DC1B-3E0F-45C1-AF7F-4C63C070D434}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0F9DC1B-3E0F-45C1-AF7F-4C63C070D434}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0F9DC1B-3E0F-45C1-AF7F-4C63C070D434}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

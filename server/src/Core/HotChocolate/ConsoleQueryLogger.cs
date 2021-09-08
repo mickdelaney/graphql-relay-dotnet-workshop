@@ -6,27 +6,28 @@ using HotChocolate.Execution;
 using HotChocolate.Execution.Instrumentation;
 using Microsoft.Extensions.Logging;
 
-namespace Workshop.Core.Hotchocolate
+namespace Workshop.Core.HotChocolate
 {
-    public class ConsoleQueryLogger : DiagnosticEventListener
+    public class ConsoleQueryLogger : ExecutionDiagnosticEventListener
     {
-        static Stopwatch _queryTimer = null!;
         readonly ILogger<ConsoleQueryLogger> _logger;
 
+        static Stopwatch _queryTimer = null!;
+        
         public ConsoleQueryLogger(ILogger<ConsoleQueryLogger> logger)
         {
             _logger = logger;
         }
 
-        // this diagnostic event is raised when a request is executed ...
-        public override IActivityScope ExecuteRequest(IRequestContext context)
+        public override IDisposable DispatchBatch(IRequestContext context)
         {
+            // this diagnostic event is raised when a request is executed ...
             // ... we will return an activity scope that is used to signal when the request is
             // finished.
             return new RequestScope(_logger, context);
         }
 
-        class RequestScope : IActivityScope
+        class RequestScope : IDisposable
         {
             readonly IRequestContext _context;
             readonly ILogger<ConsoleQueryLogger> _logger;

@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Workshop.AccountsApi.Database;
 using Workshop.AccountsApi.Domain;
 
-namespace Workshop.AccountsApi.GraphQL.People
+namespace Workshop.AccountsApi.GraphQL.People.Queries
 {
-    public class PersonByIdDataLoader : BatchDataLoader<int, Person>
+    public class PersonByIdDataLoader : BatchDataLoader<PersonId, Person>
     {
         readonly IDbContextFactory<AccountsDbContext> _dbContextFactory;
 
@@ -25,9 +25,9 @@ namespace Workshop.AccountsApi.GraphQL.People
                                 throw new ArgumentNullException(nameof(dbContextFactory));
         }
 
-        protected override async Task<IReadOnlyDictionary<int, Person>> LoadBatchAsync
+        protected override async Task<IReadOnlyDictionary<PersonId, Person>> LoadBatchAsync
         (
-            IReadOnlyList<int> keys, 
+            IReadOnlyList<PersonId> keys, 
             CancellationToken cancellationToken
         )
         {

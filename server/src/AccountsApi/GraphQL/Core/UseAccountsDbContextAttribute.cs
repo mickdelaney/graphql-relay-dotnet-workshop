@@ -3,7 +3,7 @@ using HotChocolate.Types;
 using HotChocolate.Types.Descriptors;
 using Workshop.AccountsApi.Database;
 using Workshop.Core;
-using Workshop.Core.Hotchocolate;
+using Workshop.Core.HotChocolate;
 
 namespace Workshop.AccountsApi.GraphQL.Core
 {

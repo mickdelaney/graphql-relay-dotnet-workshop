@@ -20,12 +20,24 @@ namespace Workshop.AccountsApi.Database
             base.OnModelCreating(modelBuilder);
 
             modelBuilder
-                .Entity<Person>().HasKey(c => c.Id);
+                .Entity<Person>()
+                .HasKey(c => c.Id);
             
             modelBuilder
                 .Entity<Person>()
-                    .Property(c => c.Id)
-                    .ValueGeneratedOnAdd();
+                .Property(c => c.Id)
+                .HasConversion(x => MapPersonId(x), x => CreatePersonId(x));
+        }
+        
+        
+        static PersonId CreatePersonId(int x)
+        {
+            return new PersonId(x);
+        }
+
+        static int MapPersonId(PersonId x)
+        {
+            return x.Value;
         }
     }
 }

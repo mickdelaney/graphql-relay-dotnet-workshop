@@ -3,30 +3,24 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Workshop.AccountsApi.Domain
 {
-    [Table("people", Schema = "accounts")]
-    public class Person
+    [Table("roles", Schema = "accounts")]
+    public class Role
     {
         [Required]
         [Key]
         [Column("id")]
-        public PersonId Id { get; set; }
+        public int Id { get; set; }
          
         [Required]
         [StringLength(200)]
         [Column("name")]
         public string Name { get; set;  }
-        
-        [StringLength(1000)]
-        [Column("web_site")]
-        public virtual string? WebSite { get; set; }
 
-        public Person() {}
-        public Person(PersonId id, string name, string? webSite)
+        public Role() {}
+        public Role(int id, string name)
         {
             Id = id;
             Name = name;
-            WebSite = webSite;
         }
     }
-    
 }

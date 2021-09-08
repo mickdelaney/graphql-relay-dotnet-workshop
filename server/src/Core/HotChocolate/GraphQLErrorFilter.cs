@@ -1,6 +1,6 @@
 using HotChocolate;
 
-namespace Workshop.Core.Hotchocolate
+namespace Workshop.Core.HotChocolate
 {
     public class GraphQLErrorFilter : IErrorFilter
     {

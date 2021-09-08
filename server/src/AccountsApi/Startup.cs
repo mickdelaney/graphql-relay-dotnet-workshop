@@ -14,9 +14,12 @@ using Workshop.AccountsApi.Authorization;
 using Workshop.AccountsApi.Database;
 using Workshop.AccountsApi.Domain;
 using Workshop.AccountsApi.GraphQL.People;
+using Workshop.AccountsApi.GraphQL.People.Mutations;
+using Workshop.AccountsApi.GraphQL.People.Queries;
+using Workshop.AccountsApi.GraphQL.People.Types;
 using Workshop.Core;
 using Workshop.Core.Config;
-using Workshop.Core.Hotchocolate;
+using Workshop.Core.HotChocolate;
 
 namespace Workshop.AccountsApi
 {

@@ -1,7 +1,7 @@
 using HotChocolate.Data.Filters;
 using Workshop.AccountsApi.Domain;
 
-namespace Workshop.AccountsApi.GraphQL.People
+namespace Workshop.AccountsApi.GraphQL.People.Types
 {
     public class PersonFilterType : FilterInputType<Person>
     {

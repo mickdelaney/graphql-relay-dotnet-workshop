@@ -7,23 +7,24 @@ using HotChocolate.Execution.Instrumentation;
 using HotChocolate.Language;
 using StackExchange.Profiling;
 
-namespace Workshop.Core.Hotchocolate
+namespace Workshop.Core.HotChocolate
 {
-    public class MiniProfilerQueryLogger : DiagnosticEventListener
+    public class MiniProfilerQueryLogger : ExecutionDiagnosticEventListener
     {
         // this diagnostic event is raised when a request is executed ...
-        public override IActivityScope ExecuteRequest(IRequestContext context)
+
+        public override IDisposable DispatchBatch(IRequestContext context)
         {
             // ... we will return an activity scope that is used to signal when the request is
             // finished.
             return new RequestScope(context);
         }
 
-        private class RequestScope : IActivityScope
+        class RequestScope : IDisposable
         {
-            private readonly MiniProfiler _miniProfiler;
-            private readonly IRequestContext _context;
-            private readonly Stopwatch _queryTimer;
+            readonly MiniProfiler _miniProfiler;
+            readonly IRequestContext _context;
+            readonly Stopwatch _queryTimer;
 
             public RequestScope(IRequestContext context)
             {

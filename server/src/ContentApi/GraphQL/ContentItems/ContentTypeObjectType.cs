@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Workshop.ContentApi.Database;
 using Workshop.ContentApi.Domain;
 using Workshop.Core;
-using Workshop.Core.Hotchocolate;
+using Workshop.Core.HotChocolate;
 
 namespace Workshop.ContentApi.GraphQL.ContentItems
 {

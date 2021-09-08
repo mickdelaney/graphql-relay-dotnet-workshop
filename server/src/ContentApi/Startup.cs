@@ -11,7 +11,7 @@ using Workshop.ContentApi.GraphQL.ContentItems;
 using Workshop.ContentApi.GraphQL.ContentTypes;
 using Workshop.Core;
 using Workshop.Core.Config;
-using Workshop.Core.Hotchocolate;
+using Workshop.Core.HotChocolate;
 
 namespace Workshop.ContentApi
 {

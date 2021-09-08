@@ -4,7 +4,7 @@ using HotChocolate.AspNetCore;
 using HotChocolate.Execution;
 using Microsoft.AspNetCore.Http;
 
-namespace Workshop.Core.Hotchocolate
+namespace Workshop.Core.HotChocolate
 {
     public class UserContextInterceptor : DefaultHttpRequestInterceptor
     {

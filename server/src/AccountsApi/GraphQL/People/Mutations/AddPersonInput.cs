@@ -1,4 +1,4 @@
-namespace Workshop.AccountsApi.GraphQL.People
+namespace Workshop.AccountsApi.GraphQL.People.Mutations
 {
     public record AddPersonInput
     (
