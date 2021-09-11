@@ -29,17 +29,15 @@ export const AppRoot: FunctionComponent = () => {
       <RelayEnvironmentProvider environment={RelayEnvironment}>
         <Suspense fallback={'Loading...'}>
           <BrowserRouter>
-            <div className='container'>
-              <Route path='/signin-oidc'>
-                <Link to={`/app`}>Go To App</Link>
-              </Route>
-              <Route path='/app'>
-                <SecureLayout />
-              </Route>
-              <Route path='/'>
-                <h1>Workshop Network</h1>
-              </Route>
-            </div>
+            <Route path='/signin-oidc'>
+              <Link to={`/app`}>Go To App</Link>
+            </Route>
+            <Route path='/app'>
+              <SecureLayout />
+            </Route>
+            <Route path='/'>
+              <h1>Workshop Network</h1>
+            </Route>
           </BrowserRouter>
         </Suspense>
       </RelayEnvironmentProvider>

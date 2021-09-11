@@ -34,3 +34,7 @@ dotnet ef migrations add MIGRATION_NAME --project src/ContentApi/ContentApi.cspr
 dotnet ef database update --project src/ContentApi/ContentApi.csproj --context ContentDbContext --connection "host=elevate.postgres.local;port=5705;database=workshop;username=workshop;password=workshop;keepalive=60;"
 
 ```
+
+### Index
+
+[Back To Index](../README.md)
