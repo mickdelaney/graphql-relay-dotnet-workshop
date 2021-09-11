@@ -1,0 +1,10 @@
+.row {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-bottom: 1px lightgrey solid;
+}
+
+.item {
+    padding: 12px;
+}

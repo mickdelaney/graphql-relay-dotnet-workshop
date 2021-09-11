@@ -63,8 +63,6 @@
     "concurrently": "^6.0.0",
     "doctoc": "~2.0.0",
     "eslint": "7.28.0",
-    "eslint-config-airbnb": "18.2.1",
-    "eslint-config-okonet": "7.0.2",
     "eslint-config-prettier": "^8.0.0",
     "eslint-config-shellscape": "3.0.0",
     "eslint-import-resolver-lerna": "^2.0.0",

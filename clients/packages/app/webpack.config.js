@@ -4,6 +4,6 @@ const { merge } = require('webpack-merge');
 module.exports = merge(webpackConfig, {
   entry: './src/index.tsx',
   devServer: {
-    port: '8105',
+    port: '5704',
   },
 });
