@@ -16,7 +16,8 @@
     "styled-system": "5.1.5",
     "webpack": "5.38.1",
     "html-webpack-plugin": "5.3.1",
-    "@pmmmwh/react-refresh-webpack-plugin": "0.4.3"
+    "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
+    "@jest/types": "^27.1.1"
   },
   "scripts": {
     "b": "babel-node --extensions \".es6,.js,.es,.jsx,.mjs,.ts,.tsx\"",
@@ -27,13 +28,13 @@
     "pub": "lerna publish",
     "test": "lerna run test",
     "prettier": "prettier --write **/src/**/*.ts && prettier --write **/src/**/*.tsx",
-    "admin:relay": "yarn workspace @workshop/admin relay --watchman false",
-    "admin:start": "yarn workspace @workshop/admin start",
+    "app:relay": "yarn workspace @workshop/app relay --watchman false",
+    "app:start": "yarn workspace @workshop/app start",
     "w": "yarn b webpackx.ts"
   },
   "devDependencies": {
     "@babel/preset-modules": "0.1.4",
-    "@jest/types": "^27.1.0",
+    "@jest/types": "^27.1.1",
     "@types/bcryptjs": "^2.4.1",
     "@types/dotenv-safe": "8.1.1",
     "@types/dotenv-webpack": "7.0.2",
@@ -57,7 +58,8 @@
     "@types/supertest": "2.0.11",
     "@typescript-eslint/eslint-plugin": "4.26.1",
     "@typescript-eslint/parser": "4.26.1",
-    "babel-jest": "^27.1.0",
+    "autoprefixer": "^10.3.4",
+    "babel-jest": "^27.1.1",
     "concurrently": "^6.0.0",
     "doctoc": "~2.0.0",
     "eslint": "7.28.0",
@@ -81,6 +83,7 @@
     "git-json-merge": "^0.4.4",
     "lerna": "^4.0.0",
     "lint-staged": "^11.0.0",
+    "postcss": "^8.3.6",
     "pre-commit": "^1.2.2",
     "prettier": "2.3.1",
     "typescript": "4.3.2"

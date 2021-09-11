@@ -1,4 +1,4 @@
-import graphql from "babel-plugin-relay/macro";
+import { graphql } from 'react-relay/hooks';
 import React, { FunctionComponent, useCallback, useEffect } from "react";
 import { usePaginationFragment } from "react-relay";
 import { PeopleList_people$key } from "./__generated__/PeopleList_people.graphql";

@@ -1,6 +1,6 @@
 import React, {FunctionComponent, useEffect, useState} from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import graphql from "babel-plugin-relay/macro";
+import { graphql } from 'react-relay/hooks';
 import {
   RelayEnvironmentProvider,
   loadQuery,
@@ -138,7 +138,7 @@ export const App: FunctionComponent<{
             <PeopleList people={query} setId={changePeopleConnectionId} />
           </section>
           <section className="my-4">
-            <CreatePerson peopleConnectionId={peopleConnectionId} />
+            
           </section>
         </div>
       </div>

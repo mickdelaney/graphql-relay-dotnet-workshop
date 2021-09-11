@@ -1,7 +1,7 @@
 import { useMutation, useEntryPointLoader, EntryPoint, EntryPointContainer } from 'react-relay';
 import React, { FunctionComponent, Suspense } from 'react';
 import { useForm } from 'react-hook-form';
-import graphql from 'babel-plugin-relay/macro';
+import { graphql } from 'react-relay/hooks';
 import { CreatePerson_AddPersonMutation } from './__generated__/CreatePerson_AddPersonMutation.graphql';
 import { Button } from '@workshop/ui';
 import { EnvironmentProviderOptions, IEnvironmentProvider } from 'react-relay/relay-hooks/EntryPointTypes';

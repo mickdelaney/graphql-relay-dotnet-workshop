@@ -6,9 +6,6 @@ module.exports = {
   purge: [
     './public/**/*.html',
     './src/**/*.{ts,tsx}',
-    '../candidate-accounts/src/**/*.{ts,tsx}',
-    '../talent-pools/src/**/*.{ts,tsx}',
-    '../recruit/src/**/*.{ts,tsx}',
     '../ui/src/**/*.{ts,tsx}',
   ],
   theme: {

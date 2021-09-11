@@ -11,8 +11,6 @@
     "tsBuildInfoFile": "./build/tsconfig.tsbuildinfo"
   },
   "references": [
-    { "path": "../candidate-accounts" },
-    { "path": "../recruit" },
     { "path": "../lib" },
     { "path": "../ui" }
   ],
