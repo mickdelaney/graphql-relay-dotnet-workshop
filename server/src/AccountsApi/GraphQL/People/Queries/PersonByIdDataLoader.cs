@@ -5,10 +5,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using GreenDonut;
 using Microsoft.EntityFrameworkCore;
-using Workshop.AccountsApi.Database;
-using Workshop.AccountsApi.Domain;
+using Workshop.Accounts.Api.Database;
+using Workshop.Accounts.Api.Domain;
 
-namespace Workshop.AccountsApi.GraphQL.People.Queries
+namespace Workshop.Accounts.Api.GraphQL.People.Queries
 {
     public class PersonByIdDataLoader : BatchDataLoader<PersonId, Person>
     {

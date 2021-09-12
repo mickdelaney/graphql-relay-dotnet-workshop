@@ -1,8 +1,8 @@
 using HotChocolate.Types;
-using Workshop.AccountsApi.Domain;
-using Workshop.AccountsApi.GraphQL.People.Queries;
+using Workshop.Accounts.Api.Domain;
+using Workshop.Accounts.Api.GraphQL.People.Queries;
 
-namespace Workshop.AccountsApi.GraphQL.People.Types
+namespace Workshop.Accounts.Api.GraphQL.People.Types
 {
     public class PersonType : ObjectType<Person>
     {

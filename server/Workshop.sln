@@ -1,39 +1,46 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountsApi", "src\AccountsApi\AccountsApi.csproj", "{4D40B731-FFE2-4463-90CA-651C6522AB77}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountsApi", "src\AccountsApi\AccountsApi.csproj", "{4D40B731-FFE2-4463-90CA-651C6522AB77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentApi", "src\ContentApi\ContentApi.csproj", "{579EE8CE-EBF0-477E-89B9-70213FEE7242}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentApi", "src\ContentApi\ContentApi.csproj", "{579EE8CE-EBF0-477E-89B9-70213FEE7242}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "src\Gateway\Gateway.csproj", "{9FCB8440-79A3-452C-AF1F-EF7A217E2F2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway", "src\Gateway\Gateway.csproj", "{9FCB8440-79A3-452C-AF1F-EF7A217E2F2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proxy", "src\Proxy\Proxy.csproj", "{2352CA6E-B0A3-40C7-B051-D7B7DE808587}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Proxy", "src\Proxy\Proxy.csproj", "{2352CA6E-B0A3-40C7-B051-D7B7DE808587}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "src\Core\Core.csproj", "{6FC6DF63-76CE-4AF6-8CA6-65BD29738337}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "src\Core\Core.csproj", "{6FC6DF63-76CE-4AF6-8CA6-65BD29738337}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OIDC", "src\OIDC\OIDC.csproj", "{50BDB0DE-D667-4102-A349-C38BACB4E2B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OIDC", "src\OIDC\OIDC.csproj", "{50BDB0DE-D667-4102-A349-C38BACB4E2B7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{3DA4EC17-478B-4255-8901-66D431F8E46B}"
-ProjectSection(SolutionItems) = preProject
-	..\README.md = ..\README.md
-	..\DATABASE.md = ..\DATABASE.md
-	..\GRAPHQL.md = ..\GRAPHQL.md
-	..\APPLICATION.md = ..\APPLICATION.md
-	..\WORKSHOP.md = ..\WORKSHOP.md
-	..\TYE.md = ..\TYE.md
-EndProjectSection
+	ProjectSection(SolutionItems) = preProject
+		..\APPLICATION.md = ..\APPLICATION.md
+		..\DATABASE.md = ..\DATABASE.md
+		..\GRAPHQL.md = ..\GRAPHQL.md
+		..\README.md = ..\README.md
+		..\TYE.md = ..\TYE.md
+		..\WORKSHOP.md = ..\WORKSHOP.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{9C3FF965-C945-4491-9F20-7AF956813E01}"
-ProjectSection(SolutionItems) = preProject
-	tye.yaml = tye.yaml
-	Directory.Build.targets = Directory.Build.targets
-	Directory.Build.props = Directory.Build.props
-	global.json = global.json
-	NuGet.config = NuGet.config
-	docker-compose.yaml = docker-compose.yaml
-	migrate.sh = migrate.sh
-EndProjectSection
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		docker-compose.yaml = docker-compose.yaml
+		global.json = global.json
+		migrate.sh = migrate.sh
+		NuGet.config = NuGet.config
+		tye.yaml = tye.yaml
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cli", "src\Cli\Cli.csproj", "{E0F9DC1B-3E0F-45C1-AF7F-4C63C070D434}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cli", "src\Cli\Cli.csproj", "{E0F9DC1B-3E0F-45C1-AF7F-4C63C070D434}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversationsApi", "src\ConversationsApi\ConversationsApi.csproj", "{C1A04B6A-C890-4028-B385-D95F1B983D01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "src\Tests\Tests.csproj", "{EE93A6B3-4490-4388-A248-A3A3024E483D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,5 +76,19 @@ Global
 		{E0F9DC1B-3E0F-45C1-AF7F-4C63C070D434}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0F9DC1B-3E0F-45C1-AF7F-4C63C070D434}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0F9DC1B-3E0F-45C1-AF7F-4C63C070D434}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1A04B6A-C890-4028-B385-D95F1B983D01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1A04B6A-C890-4028-B385-D95F1B983D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1A04B6A-C890-4028-B385-D95F1B983D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1A04B6A-C890-4028-B385-D95F1B983D01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE93A6B3-4490-4388-A248-A3A3024E483D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE93A6B3-4490-4388-A248-A3A3024E483D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE93A6B3-4490-4388-A248-A3A3024E483D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE93A6B3-4490-4388-A248-A3A3024E483D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E5DCC849-F8D8-4E1F-897A-4922FB0EC3A9}
 	EndGlobalSection
 EndGlobal

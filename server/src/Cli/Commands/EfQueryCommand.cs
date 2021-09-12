@@ -2,8 +2,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Oakton;
-using Workshop.AccountsApi.Database;
-using Workshop.AccountsApi.Domain;
+using Workshop.Accounts.Api.Database;
+using Workshop.Accounts.Api.Domain;
 
 namespace Cli.Commands
 {

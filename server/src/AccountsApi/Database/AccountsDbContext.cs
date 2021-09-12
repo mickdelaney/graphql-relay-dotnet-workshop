@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Workshop.AccountsApi.Domain;
+using Workshop.Accounts.Api.Domain;
 
-namespace Workshop.AccountsApi.Database
+namespace Workshop.Accounts.Api.Database
 {
     public class AccountsDbContext : DbContext
     {

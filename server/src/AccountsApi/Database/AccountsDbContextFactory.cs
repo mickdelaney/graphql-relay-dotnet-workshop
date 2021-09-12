@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Workshop.Core.Config;
 
-namespace Workshop.AccountsApi.Database
+namespace Workshop.Accounts.Api.Database
 {
     public class AccountsDbContextFactory : IDesignTimeDbContextFactory<AccountsDbContext>
     {

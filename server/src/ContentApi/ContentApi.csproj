@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <AssemblyName>Workshop.ContentApi</AssemblyName>
-    <RootNamespace>Workshop.ContentApi</RootNamespace>
+    <AssemblyName>Workshop.Content.Api</AssemblyName>
+    <RootNamespace>Workshop.Content.Api</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +12,7 @@
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="5.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
     <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="4.2.22" />
+    <PackageReference Include="NodaTime" Version="3.0.5" />
     <PackageReference Update="Microsoft.EntityFrameworkCore" Version="5.0.9" />
   </ItemGroup>
 

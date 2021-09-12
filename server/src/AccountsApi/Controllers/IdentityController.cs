@@ -2,7 +2,7 @@ using System.Linq;
 using HotChocolate.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Workshop.AccountsApi.Controllers
+namespace Workshop.Accounts.Api.Controllers
 {
     [Route("identity")]
     [Authorize]

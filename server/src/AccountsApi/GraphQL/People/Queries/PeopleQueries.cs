@@ -6,11 +6,11 @@ using HotChocolate;
 using HotChocolate.Resolvers;
 using HotChocolate.Types.Relay;
 using Microsoft.EntityFrameworkCore;
-using Workshop.AccountsApi.Database;
-using Workshop.AccountsApi.Domain;
-using Workshop.AccountsApi.GraphQL.Core;
+using Workshop.Accounts.Api.Database;
+using Workshop.Accounts.Api.Domain;
+using Workshop.Accounts.Api.GraphQL.Core;
 
-namespace Workshop.AccountsApi.GraphQL.People.Queries
+namespace Workshop.Accounts.Api.GraphQL.People.Queries
 {
     public class PeopleQueries
     {

@@ -3,9 +3,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using HotChocolate.Resolvers;
 using Microsoft.AspNetCore.Authorization;
-using Workshop.AccountsApi.Domain;
+using Workshop.Accounts.Api.Domain;
 
-namespace Workshop.AccountsApi.Authorization
+namespace Workshop.Accounts.Api.Authorization
 {
     public class PersonAuthorizationHandler : AuthorizationHandler<PersonRequirement, IResolverContext>
     {

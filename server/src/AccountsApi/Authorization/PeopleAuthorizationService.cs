@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Workshop.AccountsApi.Authorization
+namespace Workshop.Accounts.Api.Authorization
 {
     public class PeopleAuthorizationService
     {

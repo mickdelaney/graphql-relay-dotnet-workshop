@@ -1,5 +1,3 @@
-using System;
-using System.Configuration;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,18 +8,16 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using StackExchange.Redis;
-using Workshop.AccountsApi.Authorization;
-using Workshop.AccountsApi.Database;
-using Workshop.AccountsApi.Domain;
-using Workshop.AccountsApi.GraphQL.People;
-using Workshop.AccountsApi.GraphQL.People.Mutations;
-using Workshop.AccountsApi.GraphQL.People.Queries;
-using Workshop.AccountsApi.GraphQL.People.Types;
-using Workshop.Core;
+using Workshop.Accounts.Api.Authorization;
+using Workshop.Accounts.Api.Database;
+using Workshop.Accounts.Api.Domain;
+using Workshop.Accounts.Api.GraphQL.People.Mutations;
+using Workshop.Accounts.Api.GraphQL.People.Queries;
+using Workshop.Accounts.Api.GraphQL.People.Types;
 using Workshop.Core.Config;
 using Workshop.Core.HotChocolate;
 
-namespace Workshop.AccountsApi
+namespace Workshop.Accounts.Api
 {
     public class Startup
     {

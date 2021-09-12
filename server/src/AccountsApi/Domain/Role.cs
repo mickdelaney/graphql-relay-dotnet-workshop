@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Workshop.AccountsApi.Domain
+namespace Workshop.Accounts.Api.Domain
 {
     [Table("roles", Schema = "accounts")]
     public class Role

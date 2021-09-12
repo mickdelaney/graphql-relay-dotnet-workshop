@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Workshop.AccountsApi.Database;
+using Workshop.Accounts.Api.Database;
 using Workshop.Core.Config;
 
 namespace Cli
