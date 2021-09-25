@@ -13,6 +13,12 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      height: {
+        screen50: '50vh',
+        screen60: '60vh',
+        screen75: '75vh',
+        screen80: '80vh',
+      },
     },
   },
 }

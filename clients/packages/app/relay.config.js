@@ -9,4 +9,9 @@ module.exports = {
   ],
   schema: '../../schema/schema.graphql',
   language: 'typescript',
+  customScalars: {
+    UUID: 'string',
+    Date: 'string',
+    DateTime: 'string',
+  },
 };

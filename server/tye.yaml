@@ -15,12 +15,21 @@ services:
   - name: https 
     port: 5701
     protocol: https
+- name: conversationsapi
+  project: src/ConversationsApi/ConversationsApi.csproj
+  bindings:
+    - name: https
+      port: 5710
+      protocol: https    
 - name: gateway
   project: src/Gateway/Gateway.csproj
   bindings:
   - name: https 
     port: 5702
     protocol: https
+  - name: http
+    port: 5707
+    protocol: http
 - name: oidc
   project: src/OIDC/OIDC.csproj
   bindings:

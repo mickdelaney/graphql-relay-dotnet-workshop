@@ -36,7 +36,7 @@ directive @stream(
   initialCount: Int!
 
   """Streamed when true."""
-  if: Boolean!
+  if: Boolean
 ) on FIELD
 
 """Delegates a resolver to a remote schema."""
@@ -62,6 +62,47 @@ directive @source(
   schema: Name!
 ) on ENUM | OBJECT | INTERFACE | UNION | INPUT_OBJECT | FIELD_DEFINITION | INPUT_FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE
 
+directive @authorize(
+  """
+  The name of the authorization policy that determines access to the annotated resource.
+  """
+  policy: String
+
+  """Roles that are allowed to access the annotated resource."""
+  roles: [String!]
+
+  """
+  Defines when when the resolver shall be executed.By default the resolver is
+  executed after the policy has determined that the current user is allowed to
+  access the field.
+  """
+  apply: ApplyPolicy! = BEFORE_RESOLVER
+) on SCHEMA | OBJECT | FIELD_DEFINITION
+
+input AddContentItemInput {
+  clientMutationId: String!
+  name: String!
+  ownerId: Int!
+  contentTypeId: Int!
+  tag: String!
+}
+
+type AddContentItemPayload {
+  clientMutationId: String!
+  contentItem: EdgeOfContentItem!
+}
+
+input AddContentTypeInput {
+  clientMutationId: String!
+  name: String!
+  ownerId: Int!
+}
+
+type AddContentTypePayload {
+  clientMutationId: String!
+  contentType: EdgeOfContentType!
+}
+
 input AddPersonInput {
   clientMutationId: String!
   name: String!
@@ -73,10 +114,131 @@ type AddPersonPayload {
   person: EdgeOfPerson!
 }
 
-type ContentItem {
-  id: Int!
-  ownerId: Int!
-  name: String!
+enum ApplyPolicy {
+  BEFORE_RESOLVER
+  AFTER_RESOLVER
+}
+
+input BooleanOperationFilterInput {
+  eq: Boolean
+  neq: Boolean
+}
+
+input ComparableInt32OperationFilterInput {
+  eq: Int
+  neq: Int
+  in: [Int!]
+  nin: [Int!]
+  gt: Int
+  ngt: Int
+  gte: Int
+  ngte: Int
+  lt: Int
+  nlt: Int
+  lte: Int
+  nlte: Int
+}
+
+type ContentItem implements Node {
+  id: ID!
+  ownerId: Int
+  name: String
+  tag: String
+  contentType: ContentType!
+  contentTypeId: Int!
+  owner: Person
+}
+
+"""A connection to a list of items."""
+type ContentItemConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ContentItemEdge!]
+
+  """A flattened list of the nodes."""
+  nodes: [ContentItem!]
+}
+
+"""An edge in a connection."""
+type ContentItemEdge {
+  """A cursor for use in pagination."""
+  cursor: String!
+
+  """The item at the end of the edge."""
+  node: ContentItem!
+}
+
+input ContentItemFilterInput {
+  and: [ContentItemFilterInput!]
+  or: [ContentItemFilterInput!]
+  id: ComparableInt32OperationFilterInput
+  contentTypeId: ComparableInt32OperationFilterInput
+  contentType: ContentTypeFilterInput
+  ownerId: ComparableInt32OperationFilterInput
+  name: StringOperationFilterInput
+  tag: StringOperationFilterInput
+}
+
+input ContentItemSortInput {
+  id: SortEnumType
+  contentTypeId: SortEnumType
+  contentType: ContentTypeSortInput
+  ownerId: SortEnumType
+  name: SortEnumType
+  tag: SortEnumType
+}
+
+type ContentType implements Node {
+  id: ID!
+  ownerId: Int
+  name: String
+}
+
+"""A connection to a list of items."""
+type ContentTypeConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ContentTypeEdge!]
+
+  """A flattened list of the nodes."""
+  nodes: [ContentType!]
+}
+
+"""An edge in a connection."""
+type ContentTypeEdge {
+  """A cursor for use in pagination."""
+  cursor: String!
+
+  """The item at the end of the edge."""
+  node: ContentType!
+}
+
+input ContentTypeFilterInput {
+  and: [ContentTypeFilterInput!]
+  or: [ContentTypeFilterInput!]
+  id: ComparableInt32OperationFilterInput
+  ownerId: ComparableInt32OperationFilterInput
+  name: StringOperationFilterInput
+}
+
+input ContentTypeSortInput {
+  id: SortEnumType
+  ownerId: SortEnumType
+  name: SortEnumType
+}
+
+type EdgeOfContentItem {
+  node: ContentItem!
+  cursor: String!
+}
+
+type EdgeOfContentType {
+  node: ContentType!
+  cursor: String!
 }
 
 type EdgeOfPerson {
@@ -86,6 +248,8 @@ type EdgeOfPerson {
 
 type Mutation {
   addPerson(input: AddPersonInput!): AddPersonPayload!
+  addContentItem(input: AddContentItemInput!): AddContentItemPayload!
+  addContentType(input: AddContentTypeInput!): AddContentTypePayload!
 }
 
 """
@@ -119,26 +283,20 @@ type PageInfo {
   endCursor: String
 }
 
-type Person implements Node {
-  id: ID!
-  name: String
-  webSite: String
-}
-
 """A connection to a list of items."""
-type PersonConnection {
+type PeopleConnection {
   """Information to aid in pagination."""
   pageInfo: PageInfo!
 
   """A list of edges."""
-  edges: [PersonEdge!]
+  edges: [PeopleEdge!]
 
   """A flattened list of the nodes."""
   nodes: [Person!]
 }
 
 """An edge in a connection."""
-type PersonEdge {
+type PeopleEdge {
   """A cursor for use in pagination."""
   cursor: String!
 
@@ -146,10 +304,133 @@ type PersonEdge {
   node: Person!
 }
 
+type Person implements Node {
+  id: ID!
+  name: String
+  webSite: String
+}
+
+input PersonFilterInput {
+  and: [PersonFilterInput!]
+  or: [PersonFilterInput!]
+  id: BooleanOperationFilterInput
+  name: StringOperationFilterInput
+  webSite: StringOperationFilterInput
+}
+
+input PersonIdInput {
+  value: Int!
+}
+
+input PersonIdSortInput {
+  value: SortEnumType
+}
+
+input PersonSortInput {
+  id: PersonIdSortInput
+  name: SortEnumType
+  webSite: SortEnumType
+}
+
 type Query {
-  node(id: ID!): Node
-  people(first: Int, after: String, last: Int, before: String): PersonConnection
+  """Fetches an object given its ID."""
+  node(
+    """ID of the object."""
+    id: ID!
+  ): Node
+
+  """Lookup nodes by a list of IDs."""
+  nodes(
+    """The list of node IDs."""
+    ids: [ID!]!
+  ): [Node]!
+  people(
+    """Returns the first _n_ elements from the list."""
+    first: Int
+
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """Returns the last _n_ elements from the list."""
+    last: Int
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+    where: PersonFilterInput
+    order: [PersonSortInput!]
+  ): PeopleConnection
   personById(id: ID!): Person!
-  contentItem: ContentItem!
+  peopleById(ids: [ID!]!): [Person!]!
+  personByDbId(id: PersonIdInput!): Person!
+
+  """Fetches an object given its ID."""
+  Content_node(
+    """ID of the object."""
+    id: ID!
+  ): Node
+
+  """Lookup nodes by a list of IDs."""
+  Content_nodes(
+    """The list of node IDs."""
+    ids: [ID!]!
+  ): [Node]!
+  contentItem(
+    """Returns the first _n_ elements from the list."""
+    first: Int
+
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """Returns the last _n_ elements from the list."""
+    last: Int
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+    where: ContentItemFilterInput
+    order: [ContentItemSortInput!]
+  ): ContentItemConnection
+  contentItemById(id: ID!): ContentItem!
+  contentType(
+    """Returns the first _n_ elements from the list."""
+    first: Int
+
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """Returns the last _n_ elements from the list."""
+    last: Int
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+    where: ContentTypeFilterInput
+    order: [ContentTypeSortInput!]
+  ): ContentTypeConnection
+  contentTypeById(id: ID!): ContentType!
+}
+
+enum SortEnumType {
+  ASC
+  DESC
+}
+
+input StringOperationFilterInput {
+  and: [StringOperationFilterInput!]
+  or: [StringOperationFilterInput!]
+  eq: String
+  neq: String
+  contains: String
+  ncontains: String
+  in: [String]
+  nin: [String]
+  startsWith: String
+  nstartsWith: String
+  endsWith: String
+  nendsWith: String
 }
 

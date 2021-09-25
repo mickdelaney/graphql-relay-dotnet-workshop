@@ -6,6 +6,7 @@ namespace Gateway
         {
             public const string Accounts = "Accounts";
             public const string Content = "Content";
+            public const string Conversations = "Conversations";
         }
     }
 }

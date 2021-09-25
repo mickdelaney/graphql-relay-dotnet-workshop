@@ -17,12 +17,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OIDC", "src\OIDC\OIDC.cspro
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{3DA4EC17-478B-4255-8901-66D431F8E46B}"
 	ProjectSection(SolutionItems) = preProject
-		..\APPLICATION.md = ..\APPLICATION.md
-		..\DATABASE.md = ..\DATABASE.md
-		..\GRAPHQL.md = ..\GRAPHQL.md
+		..\docs\APPLICATION.md = ..\docs\APPLICATION.md
+		..\docs\DATABASE.md = ..\docs\DATABASE.md
+		..\docs\GRAPHQL.md = ..\docs\GRAPHQL.md
 		..\README.md = ..\README.md
-		..\TYE.md = ..\TYE.md
-		..\WORKSHOP.md = ..\WORKSHOP.md
+		..\docs\TYE.md = ..\docs\TYE.md
+		..\docs\WORKSHOP.md = ..\docs\WORKSHOP.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{9C3FF965-C945-4491-9F20-7AF956813E01}"
