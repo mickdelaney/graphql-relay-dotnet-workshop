@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using NodaTime;
 
-namespace Workshop.Conversations.Api.Models
+namespace Workshop.Conversations.Api.Domain.Groups
 {
     [Table("groups", Schema = "conversations")]
     [Index(nameof(AccountId), Name = "groups_account_id_idx")]
@@ -15,7 +15,7 @@ namespace Workshop.Conversations.Api.Models
     {
         [Key]
         [Column("id")]
-        public Guid Id { get; set; }
+        public GroupId Id { get; set; }
         [Required]
         [Column("name")]
         public string Name { get; set; } = default!;

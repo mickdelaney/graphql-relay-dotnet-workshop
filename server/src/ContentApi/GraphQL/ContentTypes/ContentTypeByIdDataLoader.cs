@@ -5,10 +5,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using GreenDonut;
 using Microsoft.EntityFrameworkCore;
-using Workshop.ContentApi.Database;
-using Workshop.ContentApi.Domain;
+using Workshop.Content.Api.Database;
+using Workshop.Content.Api.Domain;
 
-namespace Workshop.ContentApi.GraphQL.ContentTypes
+namespace Workshop.Content.Api.GraphQL.ContentTypes
 {
     public class ContentTypeByIdDataLoader : BatchDataLoader<int, ContentType>
     {

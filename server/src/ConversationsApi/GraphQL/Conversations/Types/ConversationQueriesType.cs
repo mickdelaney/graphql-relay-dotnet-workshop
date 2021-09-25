@@ -11,7 +11,7 @@ namespace Workshop.Conversations.Api.GraphQL.Conversations.Types
         {
             descriptor.Name(OperationTypeNames.Query);
             descriptor
-                .Field(f => f.GetConversations(default, default))
+                .Field(f => f.GetConversations(default!, default!))
                 .Type<ListType<NonNullType<ConversationType>>>()
                 .UseDbContext<ConversationsContext>()
                 .UsePaging()

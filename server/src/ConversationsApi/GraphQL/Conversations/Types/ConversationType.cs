@@ -1,6 +1,6 @@
 using HotChocolate.Types;
+using Workshop.Conversations.Api.Domain.Conversations;
 using Workshop.Conversations.Api.GraphQL.Conversations.Queries;
-using Workshop.Conversations.Api.Models;
 
 namespace Workshop.Conversations.Api.GraphQL.Conversations.Types
 {

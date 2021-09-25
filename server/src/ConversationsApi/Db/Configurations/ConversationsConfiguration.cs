@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Workshop.Conversations.Api.Models;
+using Workshop.Conversations.Api.Domain.Conversations;
 
 #nullable disable
 
@@ -12,7 +12,7 @@ namespace Workshop.Conversations.Api.Db.Configurations
         {
             entity
                 .Property(e => e.Id)
-                .HasConversion(ConversationId.Converter)
+                .HasConversion(ConversationIds.Converter)
                 .ValueGeneratedNever();
 
             entity

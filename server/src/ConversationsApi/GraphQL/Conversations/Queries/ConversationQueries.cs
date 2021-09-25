@@ -7,8 +7,8 @@ using HotChocolate.Resolvers;
 using HotChocolate.Types.Relay;
 using Microsoft.EntityFrameworkCore;
 using Workshop.Conversations.Api.Db;
+using Workshop.Conversations.Api.Domain.Conversations;
 using Workshop.Conversations.Api.GraphQL.Core;
-using Workshop.Conversations.Api.Models;
 
 namespace Workshop.Conversations.Api.GraphQL.Conversations.Queries
 {
@@ -42,7 +42,7 @@ namespace Workshop.Conversations.Api.GraphQL.Conversations.Queries
         ) => await dataLoader.LoadAsync(ids, cancellationToken);
 
         [UseConversationsContext]
-        public Task<Conversation> GetConversationByDbIdAsync
+        public async Task<Conversation?> GetConversationByDbIdAsync
         (
             ConversationId id,
             [ScopedService] 
@@ -50,7 +50,13 @@ namespace Workshop.Conversations.Api.GraphQL.Conversations.Queries
             CancellationToken cancellationToken
         )
         {
-            return context.Conversations.Where(p => p.Id == id).FirstOrDefaultAsync(cancellationToken);
+            var maybeConversation = await context.GetConversationById(id, cancellationToken);
+
+            return maybeConversation.Match
+            (
+                Some: conversation => conversation,
+                () => null!
+            );
         }
     }
 }

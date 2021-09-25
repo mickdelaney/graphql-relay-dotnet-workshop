@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Workshop.ContentApi.Domain
+namespace Workshop.Content.Api.Domain
 {
     [Table("content_items", Schema = "content")]
     public class ContentItem

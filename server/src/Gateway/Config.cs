@@ -1,4 +1,4 @@
-namespace Gateway
+namespace Workshop.Gateway
 {
     public static class Config
     {

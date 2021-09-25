@@ -1,7 +1,7 @@
 using HotChocolate.Types.Pagination;
-using Workshop.ContentApi.Domain;
+using Workshop.Content.Api.Domain;
 
-namespace Workshop.ContentApi.GraphQL.ContentItems
+namespace Workshop.Content.Api.GraphQL.ContentItems
 {
     public class AddContentItemPayload
     {

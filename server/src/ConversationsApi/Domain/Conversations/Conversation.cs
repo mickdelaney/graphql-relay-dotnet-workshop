@@ -3,9 +3,11 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using NodaTime;
+using Workshop.Conversations.Api.Domain.Messages;
+using Workshop.Conversations.Api.Domain.Threads;
 using Workshop.Core.Domain;
 
-namespace Workshop.Conversations.Api.Models
+namespace Workshop.Conversations.Api.Domain.Conversations
 {
     [Table("conversations", Schema = "conversations")]
     [Index(nameof(AccountId), Name = "conversations_account_id_idx")]

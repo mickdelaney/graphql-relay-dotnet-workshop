@@ -7,13 +7,30 @@
     <RootNamespace>Workshop.Accounts.Api</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup Label="HotChocolate">
+    <PackageReference Include="HotChocolate.Execution" />
+    <PackageReference Include="HotChocolate.Types" />
+    <PackageReference Include="HotChocolate.AspNetCore" />
+    <PackageReference Include="HotChocolate.AspNetCore.Authorization" />
+    <PackageReference Include="HotChocolate.Data" />
+    <PackageReference Include="HotChocolate.Stitching" />
+    <PackageReference Include="HotChocolate.Stitching.Redis" />
+    <PackageReference Include="HotChocolate.Subscriptions.Redis" />
+  </ItemGroup>
+
+  <ItemGroup Label="EntityFramework">
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="EFCore.NamingConventions" />
+  </ItemGroup>
+  
   <ItemGroup>
+    <PackageReference Include="LanguageExt.Core" Version="3.5.59-beta" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.9" />
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="5.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
     <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="4.2.22" />
     <PackageReference Include="NodaTime" Version="3.0.5" />
-    <PackageReference Update="Microsoft.EntityFrameworkCore" Version="5.0.9" />
   </ItemGroup>
 
   <ItemGroup>

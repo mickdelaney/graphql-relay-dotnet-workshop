@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Workshop.Conversations.Api.Models;
+using Workshop.Conversations.Api.Domain.Groups;
 
 #nullable disable
 

@@ -4,3 +4,4 @@ node_modules
 *.db-wal
 server/.idea/.idea.NextGen/.idea/dataSources/
 server/.tye/process_store
+devops/data

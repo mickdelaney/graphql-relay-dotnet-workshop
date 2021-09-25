@@ -6,14 +6,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
-using Workshop.ContentApi.Database;
-using Workshop.ContentApi.GraphQL.ContentItems;
-using Workshop.ContentApi.GraphQL.ContentTypes;
-using Workshop.Core;
+using Workshop.Content.Api.Database;
+using Workshop.Content.Api.GraphQL.ContentItems;
+using Workshop.Content.Api.GraphQL.ContentTypes;
 using Workshop.Core.Config;
 using Workshop.Core.HotChocolate;
 
-namespace Workshop.ContentApi
+namespace Workshop.Content.Api
 {
     public class Startup
     {
@@ -46,29 +45,19 @@ namespace Workshop.ContentApi
                 .AddSingleton(_ => ConnectionMultiplexer.Connect(WorkshopConfig.RedisConnectionString))
                 .AddRouting()
                 .AddGraphQLServer()
-                .AddHttpRequestInterceptor<UserContextInterceptor>()
-                .AddQueryType(d => d.Name("Query"))
-                    .AddTypeExtension<ContentItemQueries>()
-                    .AddTypeExtension<ContentTypeQueries>()
-                .AddMutationType(d => d.Name("Mutation"))
-                    .AddTypeExtension<ContentItemMutations>()
-                    .AddTypeExtension<ContentTypeMutations>()
+                    .AddDefaultConfig(services)
+                
+                
+                
+                .AddTypeExtension<ContentItemQueries>()
+                .AddTypeExtension<ContentTypeQueries>()
+                .AddTypeExtension<ContentItemMutations>()
+                .AddTypeExtension<ContentTypeMutations>()
                 .AddType<ContentItemObjectType>()
                 .AddType<ContentTypeObjectType>()
                 .AddDataLoader<ContentItemByIdDataLoader>()
                 .AddDataLoader<ContentTypeByIdDataLoader>()
-                .AddSorting()
-                .AddFiltering()
-                .EnableRelaySupport()
-                .AddDiagnosticEventListener(sp =>
-                {
-                    return new ConsoleQueryLogger(sp.GetApplicationService<ILogger<ConsoleQueryLogger>>());
-                })
-                .AddDiagnosticEventListener(sp =>
-                {
-                    return new MiniProfilerQueryLogger();
-                })
-                .InitializeOnStartup()
+                
                 // We configure the publish definition
                 .PublishSchemaDefinition
                 (

@@ -3,7 +3,7 @@ using System.Text.Json;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Workshop.Core.Domain;
 
-namespace Workshop.Conversations.Api.Models
+namespace Workshop.Conversations.Api.Domain.Conversations
 {
     public class ConversationAdministration
     {

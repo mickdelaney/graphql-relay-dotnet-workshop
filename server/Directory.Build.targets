@@ -1,28 +1,38 @@
 <Project>
 
   <PropertyGroup>
-    <HCVersion>12.0.0-rc.11</HCVersion>
+    <HcVersion>12.0.0-rc.11</HcVersion>
     <EfCoreVersion>5.0.10</EfCoreVersion>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="GraphQL.PreProcessingExtensions" Version="11.2.2" />
-    <PackageReference Include="HotChocolate.Execution" Version="$(HCVersion)" />
-    <PackageReference Include="HotChocolate.Types" Version="$(HCVersion)" />
-    <PackageReference Include="HotChocolate.AspNetCore" Version="$(HCVersion)" />
-    <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="$(HCVersion)" />
-    <PackageReference Include="HotChocolate.Data" Version="$(HCVersion)" />
-    <PackageReference Include="HotChocolate.Stitching" Version="$(HCVersion)" />
-    <PackageReference Include="HotChocolate.Stitching.Redis" Version="$(HCVersion)" />
+  <ItemGroup Label="HotChocolate">
+    <PackageReference Update="HotChocolate.Execution" Version="$(HcVersion)" />
+    <PackageReference Update="HotChocolate.Types" Version="$(HcVersion)" />
+    <PackageReference Update="HotChocolate.AspNetCore" Version="$(HcVersion)" />
+    <PackageReference Update="HotChocolate.AspNetCore.Authorization" Version="$(HcVersion)" />
+    <PackageReference Update="HotChocolate.Data" Version="$(HcVersion)" />
+    <PackageReference Update="HotChocolate.Stitching" Version="$(HcVersion)" />
+    <PackageReference Update="HotChocolate.Stitching.Redis" Version="$(HcVersion)" />
+    <PackageReference Update="HotChocolate.Subscriptions.Redis" Version="$(HcVersion)" />
+  </ItemGroup>
 
-    <PackageReference Include="EFCore.NamingConventions" Version="5.0.2" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="$(EfCoreVersion)" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="$(EfCoreVersion)">
+  <ItemGroup Label="EntityFramework">
+    <PackageReference Update="EFCore.NamingConventions" Version="5.0.2" />
+    <PackageReference Update="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7" />
+    <PackageReference Update="Microsoft.EntityFrameworkCore" Version="$(EfCoreVersion)" />
+    <PackageReference Update="Microsoft.EntityFrameworkCore.Design" Version="$(EfCoreVersion)" />
+    <PackageReference Update="Microsoft.EntityFrameworkCore.Relational" Version="$(EfCoreVersion)" />
+    <PackageReference Update="Microsoft.EntityFrameworkCore.Tools" Version="$(EfCoreVersion)">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-
+    </PackageReference>    
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Update="NodaTime" Version="3.0.5" />
+    <PackageReference Update="LanguageExt.Core" Version="3.5.59-beta" />
+    <PackageReference Update="Microsoft.Extensions.Caching.StackExchangeRedis" Version="5.0.1" />
+    <PackageReference Update="Microsoft.Extensions.Configuration" Version="5.0.0" />
   </ItemGroup>
 
 </Project>

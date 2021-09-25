@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Workshop.Conversations.Api.Models;
+using Workshop.Conversations.Api.Domain.Conversations;
+using Workshop.Conversations.Api.Domain.Groups;
+using Workshop.Conversations.Api.Domain.Messages;
+using Workshop.Conversations.Api.Domain.Threads;
 
 #nullable disable
 

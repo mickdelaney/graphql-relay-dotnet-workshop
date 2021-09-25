@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Workshop.ContentApi
+namespace Workshop.Content.Api
 {
     public class Program
     {

@@ -2,15 +2,13 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using HotChocolate;
-using HotChocolate.Resolvers;
 using HotChocolate.Types;
 using Microsoft.EntityFrameworkCore;
-using Workshop.ContentApi.Database;
-using Workshop.ContentApi.Domain;
-using Workshop.Core;
+using Workshop.Content.Api.Database;
+using Workshop.Content.Api.Domain;
 using Workshop.Core.HotChocolate;
 
-namespace Workshop.ContentApi.GraphQL.ContentItems
+namespace Workshop.Content.Api.GraphQL.ContentItems
 {
     public class ContentItemObjectType : ObjectType<ContentItem>
     {

@@ -3,8 +3,10 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using NodaTime;
+using Workshop.Conversations.Api.Domain.Conversations;
+using Workshop.Conversations.Api.Domain.Threads;
 
-namespace Workshop.Conversations.Api.Models
+namespace Workshop.Conversations.Api.Domain.Messages
 {
     [Table("messages", Schema = "conversations")]
     [Index(nameof(AccountId), Name = "messages_account_id_idx")]
@@ -15,7 +17,7 @@ namespace Workshop.Conversations.Api.Models
     {
         [Key]
         [Column("id")]
-        public Guid Id { get; set; }
+        public MessageId Id { get; set; }
         [Column("conversation_id")]
         public Guid ConversationId { get; set; }
         [Column("thread_id")]
@@ -45,10 +47,10 @@ namespace Workshop.Conversations.Api.Models
         public Guid AccountId { get; set; }
 
         [ForeignKey(nameof(ConversationId))]
-        [InverseProperty(nameof(Models.Conversation.Messages))]
+        [InverseProperty(nameof(Conversations.Conversation.Messages))]
         public virtual Conversation Conversation { get; set; } = default!;
         [ForeignKey(nameof(ThreadId))]
-        [InverseProperty(nameof(Models.Thread.Messages))]
+        [InverseProperty(nameof(Threads.Thread.Messages))]
         public virtual Thread Thread { get; set; } = default!;
     }
 }

@@ -11,8 +11,19 @@
     <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Update="Microsoft.EntityFrameworkCore" Version="5.0.9" />
+  <ItemGroup Label="HotChocolate">
+    <PackageReference Include="HotChocolate.Execution" />
+    <PackageReference Include="HotChocolate.Types" />
+    <PackageReference Include="HotChocolate.AspNetCore" />
+    <PackageReference Include="HotChocolate.AspNetCore.Authorization" />
+    <PackageReference Include="HotChocolate.Data" />
+    <PackageReference Include="HotChocolate.Stitching" />
+    <PackageReference Include="HotChocolate.Stitching.Redis" />
+    <PackageReference Include="HotChocolate.Subscriptions.Redis" />
+  </ItemGroup>
+
+  <ItemGroup Label="EntityFramework">
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
 
 </Project>

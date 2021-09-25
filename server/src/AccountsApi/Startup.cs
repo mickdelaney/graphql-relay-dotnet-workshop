@@ -1,19 +1,14 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using StackExchange.Redis;
 using Workshop.Accounts.Api.Authorization;
 using Workshop.Accounts.Api.Database;
-using Workshop.Accounts.Api.Domain;
-using Workshop.Accounts.Api.GraphQL.People.Mutations;
-using Workshop.Accounts.Api.GraphQL.People.Queries;
-using Workshop.Accounts.Api.GraphQL.People.Types;
+using Workshop.Accounts.Api.GraphQL.People;
 using Workshop.Core.Config;
 using Workshop.Core.HotChocolate;
 
@@ -53,11 +48,6 @@ namespace Workshop.Accounts.Api
                     };
                 });
 
-            services.AddSingleton<IAuthorizationHandler, PeopleAuthorizationHandler>();
-            services.AddSingleton<IAuthorizationHandler, PersonAuthorizationHandler>();
-            
-            services.AddSingleton<PeopleAuthorizationService>();
-                
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("people", policy => policy.Requirements.Add(new PeopleRequirement()));
@@ -91,28 +81,8 @@ namespace Workshop.Accounts.Api
                 .AddSingleton(_ => ConnectionMultiplexer.Connect(WorkshopConfig.RedisConnectionString))
                 .AddRouting()
                 .AddGraphQLServer()
-                .AddHttpRequestInterceptor<UserContextInterceptor>()
-                .AddQueryType(d => d.Name("Query"))
-                .AddMutationType(d => d.Name("Mutation"))
-                    .AddTypeExtension<PeopleMutations>()
-                .AddType<PersonType>()
-                .AddType<PersonFilterType>()
-                .AddType<PeopleQueriesType>()
-                .BindRuntimeType<Person, PersonFilterType>()
-                .AddSorting()
-                .AddFiltering()
-                .EnableRelaySupport()
-                .AddAuthorization()
-                .AddDataLoader<PersonByIdDataLoader>()
-                .AddDiagnosticEventListener(sp =>
-                {
-                    return new ConsoleQueryLogger(sp.GetApplicationService<ILogger<ConsoleQueryLogger>>());
-                })
-                .AddDiagnosticEventListener(sp =>
-                {
-                    return new MiniProfilerQueryLogger();
-                })
-                .InitializeOnStartup()
+                .AddDefaultConfig(services)
+                .AddPeopleSchema(services)
                 // We configure the publish definition
                 .PublishSchemaDefinition
                 (
@@ -128,8 +98,6 @@ namespace Workshop.Accounts.Api
                     )
                 );
             
-            services.AddErrorFilter<GraphQLErrorFilter>();
-
             services.AddMiniProfiler(options => { options.RouteBasePath = "/profiler"; });
         }
 

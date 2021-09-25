@@ -1,5 +1,5 @@
 using HotChocolate.Types.Pagination;
-using Workshop.Conversations.Api.Models;
+using Workshop.Conversations.Api.Domain.Conversations;
 
 namespace Workshop.Conversations.Api.GraphQL.Conversations.Mutations
 {

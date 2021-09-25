@@ -5,8 +5,8 @@ using HotChocolate.Resolvers;
 using HotChocolate.Types;
 using HotChocolate.Types.Pagination;
 using Workshop.Conversations.Api.Db;
+using Workshop.Conversations.Api.Domain.Conversations;
 using Workshop.Conversations.Api.GraphQL.Core;
-using Workshop.Conversations.Api.Models;
 using Workshop.Core.Domain;
 
 namespace Workshop.Conversations.Api.GraphQL.Conversations.Mutations
@@ -32,7 +32,7 @@ namespace Workshop.Conversations.Api.GraphQL.Conversations.Mutations
             
             var conversation = new Conversation
             {
-                Id = ConversationId.Generate(),
+                Id = ConversationIds.Generate(),
                 Title = input.Title,
                 Description = input.Description
             };

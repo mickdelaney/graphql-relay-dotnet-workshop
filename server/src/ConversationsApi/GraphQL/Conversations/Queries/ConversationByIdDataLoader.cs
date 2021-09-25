@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using GreenDonut;
 using Microsoft.EntityFrameworkCore;
 using Workshop.Conversations.Api.Db;
-using Workshop.Conversations.Api.Models;
+using Workshop.Conversations.Api.Domain.Conversations;
 
 namespace Workshop.Conversations.Api.GraphQL.Conversations.Queries
 {

@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
 using Workshop.Core.Config;
 
-namespace Gateway
+namespace Workshop.Gateway
 {
     public class Startup
     {  

@@ -4,7 +4,7 @@ using HotChocolate.AspNetCore;
 using HotChocolate.Execution;
 using Microsoft.AspNetCore.Http;
 
-namespace Gateway
+namespace Workshop.Gateway
 {
     public class RequestInterceptor : DefaultHttpRequestInterceptor
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Workshop.Conversations.Api.Models
+namespace Workshop.Conversations.Api.Domain.Conversations
 {
-    public record ConversationId(Guid Value)
+    public static class ConversationIds
     {
         public static ConversationId Generate()
         {

@@ -6,11 +6,11 @@ using HotChocolate;
 using HotChocolate.Data;
 using HotChocolate.Types;
 using HotChocolate.Types.Relay;
-using Workshop.ContentApi.Database;
-using Workshop.ContentApi.Domain;
-using Workshop.ContentApi.GraphQL.Core;
+using Workshop.Content.Api.Database;
+using Workshop.Content.Api.Domain;
+using Workshop.Content.Api.GraphQL.Core;
 
-namespace Workshop.ContentApi.GraphQL.ContentItems
+namespace Workshop.Content.Api.GraphQL.ContentItems
 {
     [ExtendObjectType(Name = "Query")]
     public class ContentItemQueries

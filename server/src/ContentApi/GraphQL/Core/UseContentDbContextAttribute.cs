@@ -1,11 +1,10 @@
 using System.Reflection;
 using HotChocolate.Types;
 using HotChocolate.Types.Descriptors;
-using Workshop.ContentApi.Database;
-using Workshop.Core;
+using Workshop.Content.Api.Database;
 using Workshop.Core.HotChocolate;
 
-namespace Workshop.ContentApi.GraphQL.Core
+namespace Workshop.Content.Api.GraphQL.Core
 {
     public class UseContentDbContextAttribute : ObjectFieldDescriptorAttribute
     {
