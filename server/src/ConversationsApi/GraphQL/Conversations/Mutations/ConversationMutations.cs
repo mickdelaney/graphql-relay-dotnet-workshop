@@ -34,9 +34,10 @@ namespace Workshop.Conversations.Api.GraphQL.Conversations.Mutations
             {
                 Id = ConversationIds.Generate(),
                 Title = input.Title,
-                Description = input.Description
+                Description = input.Description,
+                AccountId = user.AccountId
             };
-
+            
             conversation.Init(user);
 
             context.Conversations.Add(conversation);

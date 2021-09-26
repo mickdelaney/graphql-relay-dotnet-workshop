@@ -1,12 +1,7 @@
-﻿using System;
+﻿using StronglyTypedIds;
 
 namespace Workshop.Core.Domain
 {
-    public record AccountId(Guid Value)
-    {
-        public static AccountId Generate()
-        {
-            return new AccountId(Guid.NewGuid());
-        }
-    };
+    [StronglyTypedId(converters: StronglyTypedIdConverter.SystemTextJson)] 
+    public partial struct AccountId { }
 }

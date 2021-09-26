@@ -1,0 +1,55 @@
+﻿{
+    "Elevate": {
+        "AwsSecretsManager": {
+            "AwsEnvironmentName": "production"
+        },
+        "Identity": {
+            "ServerHost": "app.elevatedirect.com"
+        },
+        "Kafka": {
+            "Brokers": "b-1.production.q173tt.c3.kafka.eu-west-1.amazonaws.com:9092,b-2.production.q173tt.c3.kafka.eu-west-1.amazonaws.com:9092,b-3.production.q173tt.c3.kafka.eu-west-1.amazonaws.com:9092",
+            "SchemaRegistryUrl": "http://kafka-schema-registry-cp-schema-registry.kafka-prod.svc.cluster.local:8081"
+        },
+        "Logging": {
+            "AddAwsSignature": "false",
+            "AwsSignatureRegion": "eu-west-1",
+            "Collection": "logs.prod",
+            "Host": "vpc-logs-bofidyelvkgamhfhxur72zocoe.eu-west-1.es.amazonaws.com",
+            "Level": "Information",
+            "Port": "443",
+            "RollingFileFolder": "E:\\elevate",
+            "Scheme": "https",
+            "Secure": "false",
+            "LogLevelOverrides": {
+                "Microsoft": "Warning"
+            }
+        },
+        "MatrixApi": {
+            "BaseUrl": "https://api.matrix-cr.net",
+            "ClientId": "elevate",
+            "ClientSecret": "",
+            "TokenEndpointUrl": "https://api.matrix-cr.net/connect/token"
+        },
+        "Platform": {
+            "ElevateServerHost": "app.elevatedirect.com"
+        },
+        "RabbitMq": {
+            "RabbitMQHost": "prod.rabbitmq.elevate.internal",
+            "RabbitMQPassword": "hghynnffvuserasdsad90",
+            "RabbitMQPort": "5672",
+            "RabbitMQUser": "elevuser090",
+            "RabbitMQVHost": "elevate_prod"
+        },
+        "RecruitApi": {
+            "BaseUrl": "http://elevate-app-admin-api.production.svc.cluster.local/admin/"
+        },
+        "Redis": {
+            "RedisHost": "prod.redis.elevate.internal",
+            "RedisPassword": "",
+            "RedisPort": "6379"
+        },
+        "VaultApi": {
+            "BaseAddress": "http://elevate-vault-api.production.svc.cluster.local/vault.api/"
+        }
+    }
+}

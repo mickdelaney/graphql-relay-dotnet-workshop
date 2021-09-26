@@ -6,7 +6,6 @@ namespace Workshop.Core.Domain
     {
         public static void Init(this IAuditableEntity entity, IUser user)
         {
-            entity.AccountId = user.AccountId;
             entity.CreatedOn = new Instant();
             entity.CreatedById = user.Id;
             entity.Updated(user);

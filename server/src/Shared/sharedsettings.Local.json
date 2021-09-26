@@ -1,0 +1,29 @@
+﻿{
+    "ConnectionStrings": {
+        "PostgresIntegrationsDatabase": "host=elevate.postgres.local;port=5432;database=elevate_recruit;username=elevate_integrations_user;password=elevate;",
+        "PostgresIntegrationsDatabaseMigrations": "host=elevate.postgres.local;port=5432;database=elevate_recruit;username=elevate_integrations_migration_user;password=elevate;",
+        "PostgresRecruitDatabase": "host=elevate.postgres.local;port=5432;database=elevate_recruit;username=elevate_recruit_user;password=elevate;keepalive=60;"
+    },
+    "Elevate": {
+        "Logging": {
+            "Level": "Debug",
+            "UseConsole": true,
+            "UseRollingFile": true,
+            "UseElasticSearch": true,
+            "ConsoleLogFormat": "LiterateTemplate",
+            "SentryDsn": "",
+            "LogLevelOverrides": {
+                "Microsoft.AspNetCore": "Information"
+            }
+        },
+        "ApplicationLifetime": {
+            "DelayTerminateOnSigTerm": false
+        },
+        "AwsSecretsManager": {
+          "Enabled": false
+        },
+        "Kafka": {
+            "ReplicationFactor": 1
+        }
+    }
+}

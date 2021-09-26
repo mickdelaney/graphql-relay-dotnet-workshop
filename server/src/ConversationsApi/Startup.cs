@@ -9,7 +9,7 @@ using StackExchange.Redis;
 using Workshop.Conversations.Api.Db;
 using Workshop.Conversations.Api.GraphQL.Conversations;
 using Workshop.Core.Config;
-using Workshop.Core.HotChocolate;
+using Workshop.Core.GraphQL.Config;
 
 namespace Workshop.Conversations.Api
 {

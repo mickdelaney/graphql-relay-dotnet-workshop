@@ -31,6 +31,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
     <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="4.2.22" />
     <PackageReference Include="NodaTime" Version="3.0.5" />
+    <PackageReference Include="StronglyTypedId" />
   </ItemGroup>
 
   <ItemGroup>

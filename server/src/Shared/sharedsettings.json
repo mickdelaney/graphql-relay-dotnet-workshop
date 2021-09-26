@@ -1,0 +1,12 @@
+﻿{
+    "ConnectionStrings": {
+        "PostgresDatabase": "Server=localhost;Port=5705;Database=workshop;User Id=workshop;Password=workshop"
+    },
+    "Elevate": {
+        "Redis": {
+            "RedisHost": "localhost",
+            "RedisPassword": "",
+            "RedisPort": "5706"
+        }
+    }
+}

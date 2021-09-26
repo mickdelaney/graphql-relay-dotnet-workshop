@@ -10,7 +10,8 @@ using Workshop.Content.Api.Database;
 using Workshop.Content.Api.GraphQL.ContentItems;
 using Workshop.Content.Api.GraphQL.ContentTypes;
 using Workshop.Core.Config;
-using Workshop.Core.HotChocolate;
+using Workshop.Core.GraphQL.Config;
+using Workshop.Core.GraphQL.Errors;
 
 namespace Workshop.Content.Api
 {
@@ -46,32 +47,21 @@ namespace Workshop.Content.Api
                 .AddRouting()
                 .AddGraphQLServer()
                     .AddDefaultConfig(services)
-                
-                
-                
-                .AddTypeExtension<ContentItemQueries>()
-                .AddTypeExtension<ContentTypeQueries>()
-                .AddTypeExtension<ContentItemMutations>()
-                .AddTypeExtension<ContentTypeMutations>()
-                .AddType<ContentItemObjectType>()
-                .AddType<ContentTypeObjectType>()
-                .AddDataLoader<ContentItemByIdDataLoader>()
-                .AddDataLoader<ContentTypeByIdDataLoader>()
-                
-                // We configure the publish definition
-                .PublishSchemaDefinition
-                (
-                    c => c
-                        // The name of the schema. This name should be unique
-                        .SetName("Content")
-                        .PublishToRedis
-                        (
-                            // The configuration name under which the schema should be published
-                            "NextGen",
-                            // The connection multiplexer that should be used for publishing
-                            sp => sp.GetRequiredService<ConnectionMultiplexer>()
-                        )
-                );
+                    .AddContentItemsSchema()
+                    .AddContentTypesSchema()
+                    .PublishSchemaDefinition
+                    (
+                        c => c
+                            // The name of the schema. This name should be unique
+                            .SetName("Content")
+                            .PublishToRedis
+                            (
+                                // The configuration name under which the schema should be published
+                                "NextGen",
+                                // The connection multiplexer that should be used for publishing
+                                sp => sp.GetRequiredService<ConnectionMultiplexer>()
+                            )
+                    );
             
             services.AddErrorFilter<GraphQLErrorFilter>();
             

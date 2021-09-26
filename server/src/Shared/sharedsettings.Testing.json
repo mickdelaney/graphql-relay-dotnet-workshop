@@ -1,0 +1,45 @@
+﻿{
+    "ConnectionStrings": {
+        "PostgresIntegrationsDatabase": "host=elevate.postgres.local;port=5432;database=integration_tests_integrations;username=elevate_recruit_user;password=elevate;",
+        "PostgresIntegrationsDatabaseMigrations": "host=elevate.postgres.local;port=5432;database=integration_tests_integrations;username=elevate_recruit_user;password=elevate;",
+        "PostgresRecruitDatabase": "host=elevate.postgres.local;port=5432;database=elevate_recruit;username=elevate_recruit_user;password=elevate;keepalive=60;"
+    },
+    "Elevate": {
+        "ApplicationLifetime": {
+            "DelayTerminateOnSigTerm": false
+        },
+        "AwsSecretsManager": {
+            "Enabled": false
+        },
+        "Logging": {
+            "Level": "Debug",
+            "UseConsole": true,
+            "UseRollingFile": false,
+            "UseElasticSearch": false,
+            "ConsoleLogFormat": "LiterateTemplate",
+            "SentryDsn": "",
+            "LogLevelOverrides": {
+                "System": "Debug",
+                "Microsoft": "Debug",
+                "Microsoft.AspNetCore": "Debug",
+                "Quartz": "Debug",
+                "Elevate.Framework.AspNetCore.Middleware.SetAccountContextMiddleware": "Debug",
+                "IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler": "Debug"
+            }
+        },
+        "Identity": {
+            "ServerHost": "local.elevatedirect.com"
+        },
+        "Kafka": {
+            "Brokers": "elevate.kafka.local:9094",
+            "SchemaRegistryUrl": "http://elevate.kafka.local:8082",
+            "ReplicationFactor": 1
+        },
+        "RabbitMq": {
+            "RabbitMQPort": "5673"
+        },
+        "RecruitApi": {
+            "BaseUrl": "https://not.a.valid.url/"
+        }
+    }
+}

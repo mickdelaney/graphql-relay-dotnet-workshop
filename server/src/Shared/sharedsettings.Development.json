@@ -1,0 +1,51 @@
+﻿{
+    "Elevate": {
+        "AwsSecretsManager": {
+            "AwsEnvironmentName": "dev"
+        },
+        "Identity": {
+            "ServerHost": "develop.elevatedirect.com"
+        },
+        "Elsa": {
+            "BaseUrl": "http://elevate-app-admin-api.dev.svc.cluster.local/admin",
+            "BasePath": "/el-workflows"
+        },
+        "Logging": {
+            "AddAwsSignature": "false",
+            "AwsSignatureRegion": "eu-west-1",
+            "Collection": "logs.develop",
+            "Host": "vpc-logs5-qwlyycpps72r5x5nytnzdz5s6m.eu-west-1.es.amazonaws.com",
+            "Level": "Debug",
+            "Port": "443",
+            "RollingFileFolder": "E:\\elevate",
+            "Scheme": "https",
+            "Secure": "false"
+        },
+        "Kafka": {
+            "Brokers": "b-2.develop3.fgh3kk.c3.kafka.eu-west-1.amazonaws.com:9092,b-1.develop3.fgh3kk.c3.kafka.eu-west-1.amazonaws.com:9092",
+            "SchemaRegistryUrl": "http://kafka-schema-registry-cp-schema-registry.kafka-dev.svc.cluster.local:8081",
+            "ReplicationFactor": 2
+        },
+        "Platform": {
+            "ElevateServerHost": "develop.elevatedirect.com"
+        },
+        "RabbitMq": {
+            "RabbitMQHost": "develop.rabbitmq.elevate.develop.internal",
+            "RabbitMQPassword": "hghynnffvuserasdsad90",
+            "RabbitMQPort": "5672",
+            "RabbitMQUser": "elevuser090",
+            "RabbitMQVHost": "elevate_develop"
+        },
+        "RecruitApi": {
+            "BaseUrl": "http://elevate-app-admin-api.dev.svc.cluster.local/admin/"
+        },
+        "Redis": {
+            "RedisHost": "develop.redis.elevate.develop.internal",
+            "RedisPassword": "",
+            "RedisPort": "6379"
+        },
+        "VaultApi": {
+            "BaseAddress": "http://elevate-vault-api.dev.svc.cluster.local/vault.api/"
+        }
+    }
+}

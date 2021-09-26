@@ -10,7 +10,7 @@ using Workshop.Accounts.Api.Authorization;
 using Workshop.Accounts.Api.Database;
 using Workshop.Accounts.Api.GraphQL.People;
 using Workshop.Core.Config;
-using Workshop.Core.HotChocolate;
+using Workshop.Core.GraphQL.Config;
 
 namespace Workshop.Accounts.Api
 {

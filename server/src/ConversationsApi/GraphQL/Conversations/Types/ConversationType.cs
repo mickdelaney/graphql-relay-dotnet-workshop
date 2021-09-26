@@ -6,8 +6,12 @@ namespace Workshop.Conversations.Api.GraphQL.Conversations.Types
 {
     public class ConversationType : ObjectType<Conversation>
     {
+        public const string GraphName = "Conversation";
+        
         protected override void Configure(IObjectTypeDescriptor<Conversation> descriptor)
         {
+            descriptor.Name(GraphName);
+
             descriptor.Authorize("conversation");
             
             descriptor

@@ -1,0 +1,48 @@
+﻿{
+    "Elevate": {
+        "AwsSecretsManager": {
+            "AwsEnvironmentName": "staging"
+        },
+        "Identity": {
+            "ServerHost": "staging.elevatedirect.com"
+        },
+        "Logging": {
+            "AddAwsSignature": "false",
+            "AwsSignatureRegion": "eu-west-1",
+            "Collection": "logs.staging",
+            "Host": "vpc-logs5-qwlyycpps72r5x5nytnzdz5s6m.eu-west-1.es.amazonaws.com",
+            "Level": "Information",
+            "Port": "443",
+            "RollingFileFolder": "E:\\elevate",
+            "Scheme": "https",
+            "Secure": "false",
+            "LogLevelOverrides": {
+                "Microsoft": "Warning"
+            }
+        },
+        "Kafka": {
+            "Brokers": "b-2.staging.0fqs8b.c3.kafka.eu-west-1.amazonaws.com:9092,b-1.staging.0fqs8b.c3.kafka.eu-west-1.amazonaws.com:9092",
+            "SchemaRegistryUrl": "http://kafka-schema-registry-staging-cp-schema-registry.kafka-staging.svc.cluster.local:8081",
+            "ReplicationFactor": 2
+        },
+        "Platform": { "ElevateServerHost": "staging.elevatedirect.com" },
+        "RabbitMq": {
+            "RabbitMQHost": "staging.rabbitmq.elevate.develop.internal",
+            "RabbitMQPassword": "hghynnffvuserasdsad90",
+            "RabbitMQPort": "5672",
+            "RabbitMQUser": "elevuser090",
+            "RabbitMQVHost": "elevate_staging"
+        },
+        "RecruitApi": {
+            "BaseUrl": "http://elevate-app-admin-api.staging.svc.cluster.local/admin/"
+        },
+        "Redis": {
+            "RedisHost": "staging.redis.elevate.develop.internal",
+            "RedisPassword": "",
+            "RedisPort": "6379"
+        },
+        "VaultApi": {
+            "BaseAddress": "http://elevate-vault-api.staging.svc.cluster.local/vault.api/"
+        }
+    }
+}

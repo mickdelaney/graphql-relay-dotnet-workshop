@@ -10,6 +10,8 @@ namespace Workshop.Conversations.Api.GraphQL.Conversations.Types
             IFilterInputTypeDescriptor<Conversation> descriptor
         )
         {
+            descriptor.Name($"{ConversationType.GraphName}Filter");
+
             descriptor.BindFieldsExplicitly();
             
             descriptor
