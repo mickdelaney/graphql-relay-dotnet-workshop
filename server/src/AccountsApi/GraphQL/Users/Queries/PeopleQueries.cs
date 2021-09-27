@@ -15,7 +15,7 @@ namespace Workshop.Accounts.Api.GraphQL.People.Queries
     public class PeopleQueries
     {
         [GraphQLName("people")]
-        public IQueryable<Person> GetPeople
+        public IQueryable<User> GetPeople
         (
             [ScopedService] 
             AccountsDbContext context,
@@ -26,23 +26,23 @@ namespace Workshop.Accounts.Api.GraphQL.People.Queries
             return context.People;
         }
        
-        public Task<Person> GetPersonByIdAsync
+        public Task<User> GetPersonByIdAsync
         (
-            [ID(nameof(Person))]
+            [ID(nameof(User))]
             PersonId id,
             PersonByIdDataLoader dataLoader,
             CancellationToken cancellationToken
         ) => dataLoader.LoadAsync(id, cancellationToken);
         
-        public async Task<IEnumerable<Person>> GetPeopleByIdAsync
+        public async Task<IEnumerable<User>> GetPeopleByIdAsync
         (
-            [ID(nameof(Person))]PersonId[] ids,
+            [ID(nameof(User))]PersonId[] ids,
             PersonByIdDataLoader dataLoader,
             CancellationToken cancellationToken
         ) => await dataLoader.LoadAsync(ids, cancellationToken);
 
         [UseAccountsDbContext]
-        public Task<Person> GetPersonByDbIdAsync
+        public Task<User> GetPersonByDbIdAsync
         (
             PersonId id,
             [ScopedService] 

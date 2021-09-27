@@ -6,9 +6,9 @@ namespace Workshop.Accounts.Api.GraphQL.People.Mutations
     public class AddPersonPayload
     {
         public string ClientMutationId { get; }
-        public Edge<Person> Person { get; }
+        public Edge<User> Person { get; }
         
-        public AddPersonPayload(Edge<Person> person, string clientMutationId)
+        public AddPersonPayload(Edge<User> person, string clientMutationId)
         {
             Person = person;
             ClientMutationId = clientMutationId;

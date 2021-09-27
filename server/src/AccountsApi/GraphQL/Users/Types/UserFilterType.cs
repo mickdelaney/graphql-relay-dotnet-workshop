@@ -3,11 +3,11 @@ using Workshop.Accounts.Api.Domain;
 
 namespace Workshop.Accounts.Api.GraphQL.People.Types
 {
-    public class PersonFilterType : FilterInputType<Person>
+    public class UserFilterType : FilterInputType<User>
     {
         protected override void Configure
         (
-            IFilterInputTypeDescriptor<Person> descriptor
+            IFilterInputTypeDescriptor<User> descriptor
         )
         {
             descriptor.BindFieldsExplicitly();

@@ -10,11 +10,11 @@ using Workshop.Accounts.Api.Domain;
 
 namespace Workshop.Accounts.Api.GraphQL.People.Queries
 {
-    public class PersonByIdDataLoader : BatchDataLoader<PersonId, Person>
+    public class UserByIdDataLoader : BatchDataLoader<PersonId, User>
     {
         readonly IDbContextFactory<AccountsDbContext> _dbContextFactory;
 
-        public PersonByIdDataLoader
+        public UserByIdDataLoader
         (       
             IBatchScheduler batchScheduler, 
             IDbContextFactory<AccountsDbContext> dbContextFactory
@@ -25,7 +25,7 @@ namespace Workshop.Accounts.Api.GraphQL.People.Queries
                                 throw new ArgumentNullException(nameof(dbContextFactory));
         }
 
-        protected override async Task<IReadOnlyDictionary<PersonId, Person>> LoadBatchAsync
+        protected override async Task<IReadOnlyDictionary<PersonId, User>> LoadBatchAsync
         (
             IReadOnlyList<PersonId> keys, 
             CancellationToken cancellationToken

@@ -4,9 +4,9 @@ using Workshop.Accounts.Api.GraphQL.People.Queries;
 
 namespace Workshop.Accounts.Api.GraphQL.People.Types
 {
-    public class PersonType : ObjectType<Person>
+    public class UserType : ObjectType<User>
     {
-        protected override void Configure(IObjectTypeDescriptor<Person> descriptor)
+        protected override void Configure(IObjectTypeDescriptor<User> descriptor)
         {
             descriptor.Authorize("person");
             

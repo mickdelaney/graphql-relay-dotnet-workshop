@@ -9,7 +9,7 @@ using Workshop.Accounts.Api.GraphQL.People.Types;
 
 namespace Workshop.Accounts.Api.GraphQL.People
 {
-    public static class PeopleSchema
+    public static class UserSchema
     {
         public static IRequestExecutorBuilder AddPeopleSchema
         (
@@ -22,7 +22,7 @@ namespace Workshop.Accounts.Api.GraphQL.People
                 .AddType<PersonType>()
                 .AddType<PersonFilterType>()
                 .AddType<PeopleQueriesType>()
-                .BindRuntimeType<Person, PersonFilterType>()
+                .BindRuntimeType<User, PersonFilterType>()
                 .AddDataLoader<PersonByIdDataLoader>();
 
             services.AddSingleton<IAuthorizationHandler, PeopleAuthorizationHandler>();

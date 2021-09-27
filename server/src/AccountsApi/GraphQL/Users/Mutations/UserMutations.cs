@@ -9,7 +9,7 @@ using Workshop.Accounts.Api.GraphQL.Core;
 namespace Workshop.Accounts.Api.GraphQL.People.Mutations
 {
     [ExtendObjectType(Name = "Mutation")]
-    public class PeopleMutations
+    public class UserMutations
     {
         [UseAccountsDbContext]
         public async Task<AddPersonPayload> AddPersonAsync
@@ -19,7 +19,7 @@ namespace Workshop.Accounts.Api.GraphQL.People.Mutations
             AccountsDbContext context
         )
         {
-            var person = new Person
+            var person = new User
             {
                 Name = input.Name,
                 WebSite = input.WebSite
@@ -29,7 +29,7 @@ namespace Workshop.Accounts.Api.GraphQL.People.Mutations
             
             await context.SaveChangesAsync();
 
-            var edge = new Edge<Person>(person, person.Id.ToString());
+            var edge = new Edge<User>(person, person.Id.ToString());
             return new AddPersonPayload(edge, input.ClientMutationId);
         }
     }

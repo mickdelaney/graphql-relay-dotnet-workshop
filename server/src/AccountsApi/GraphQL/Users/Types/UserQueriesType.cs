@@ -5,17 +5,17 @@ using Workshop.Core.GraphQL.Persistence;
 
 namespace Workshop.Accounts.Api.GraphQL.People.Types
 {
-    public class PeopleQueriesType : ObjectTypeExtension<PeopleQueries>
+    public class UserQueriesType : ObjectTypeExtension<PeopleQueries>
     {
         protected override void Configure(IObjectTypeDescriptor<PeopleQueries> descriptor)
         {
             descriptor.Name(OperationTypeNames.Query);
             descriptor
                 .Field(f => f.GetPeople(default, default))
-                .Type<ListType<NonNullType<PersonType>>>()
+                .Type<ListType<NonNullType<UserType>>>()
                 .UseDbContext<AccountsDbContext>()
                 .UsePaging()
-                .UseFiltering<PersonFilterType>()
+                .UseFiltering<UserFilterType>()
                 .UseSorting();
         }
     }

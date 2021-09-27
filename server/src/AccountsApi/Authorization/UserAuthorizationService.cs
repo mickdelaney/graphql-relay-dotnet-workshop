@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Workshop.Accounts.Api.Authorization
 {
-    public class PeopleAuthorizationService
+    public class UserAuthorizationService
     {
         public Task<bool> HasAccess(IReadOnlyList<int> peopleIds)
         {

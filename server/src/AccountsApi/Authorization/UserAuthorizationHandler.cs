@@ -16,7 +16,7 @@ namespace Workshop.Accounts.Api.Authorization
             IResolverContext resource
         )
         {
-            var person = resource.Parent<Person>();
+            var person = resource.Parent<User>();
 
             var idClaim = context.User.Claims.FirstOrDefault(c => c.Type == "userId");
 

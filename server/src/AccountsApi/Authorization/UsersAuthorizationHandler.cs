@@ -5,11 +5,11 @@ using Workshop.Accounts.Api.Domain;
 
 namespace Workshop.Accounts.Api.Authorization
 {
-    public class PeopleAuthorizationHandler : AuthorizationHandler<PeopleRequirement, IResolverContext>
+    public class UserAuthorizationHandler : AuthorizationHandler<PeopleRequirement, IResolverContext>
     {
         readonly PeopleAuthorizationService _service;
 
-        public PeopleAuthorizationHandler(PeopleAuthorizationService service)
+        public UserAuthorizationHandler(PeopleAuthorizationService service)
         {
             _service = service;
         }
@@ -21,7 +21,7 @@ namespace Workshop.Accounts.Api.Authorization
             IResolverContext resource
         )
         {
-            var person = resource.Parent<Person>();
+            var person = resource.Parent<User>();
             
             context.Succeed(requirement);
             
