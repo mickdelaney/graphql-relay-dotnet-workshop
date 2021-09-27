@@ -8,7 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using StackExchange.Redis;
 using Workshop.Accounts.Api.Authorization;
 using Workshop.Accounts.Api.Database;
-using Workshop.Accounts.Api.GraphQL.People;
+using Workshop.Accounts.Api.GraphQL.Users;
 using Workshop.Core.Config;
 using Workshop.Core.GraphQL.Config;
 

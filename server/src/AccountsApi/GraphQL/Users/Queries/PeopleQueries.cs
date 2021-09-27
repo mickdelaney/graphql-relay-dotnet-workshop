@@ -10,7 +10,7 @@ using Workshop.Accounts.Api.Database;
 using Workshop.Accounts.Api.Domain;
 using Workshop.Accounts.Api.GraphQL.Core;
 
-namespace Workshop.Accounts.Api.GraphQL.People.Queries
+namespace Workshop.Accounts.Api.GraphQL.Users.Queries
 {
     public class PeopleQueries
     {
@@ -29,22 +29,22 @@ namespace Workshop.Accounts.Api.GraphQL.People.Queries
         public Task<User> GetPersonByIdAsync
         (
             [ID(nameof(User))]
-            PersonId id,
-            PersonByIdDataLoader dataLoader,
+            UserId id,
+            UserByIdDataLoader dataLoader,
             CancellationToken cancellationToken
         ) => dataLoader.LoadAsync(id, cancellationToken);
         
         public async Task<IEnumerable<User>> GetPeopleByIdAsync
         (
-            [ID(nameof(User))]PersonId[] ids,
-            PersonByIdDataLoader dataLoader,
+            [ID(nameof(User))]UserId[] ids,
+            UserByIdDataLoader dataLoader,
             CancellationToken cancellationToken
         ) => await dataLoader.LoadAsync(ids, cancellationToken);
 
         [UseAccountsDbContext]
         public Task<User> GetPersonByDbIdAsync
         (
-            PersonId id,
+            UserId id,
             [ScopedService] 
             AccountsDbContext context,
             CancellationToken cancellationToken

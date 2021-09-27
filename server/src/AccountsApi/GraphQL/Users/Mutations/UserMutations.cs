@@ -6,7 +6,7 @@ using Workshop.Accounts.Api.Database;
 using Workshop.Accounts.Api.Domain;
 using Workshop.Accounts.Api.GraphQL.Core;
 
-namespace Workshop.Accounts.Api.GraphQL.People.Mutations
+namespace Workshop.Accounts.Api.GraphQL.Users.Mutations
 {
     [ExtendObjectType(Name = "Mutation")]
     public class UserMutations

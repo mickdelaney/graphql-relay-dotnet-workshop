@@ -7,7 +7,7 @@ using Workshop.Accounts.Api.Domain;
 
 namespace Workshop.Accounts.Api.Authorization
 {
-    public class PersonAuthorizationHandler : AuthorizationHandler<PersonRequirement, IResolverContext>
+    public class UserAuthorizationHandler : AuthorizationHandler<PersonRequirement, IResolverContext>
     {
         protected override Task HandleRequirementAsync
         (

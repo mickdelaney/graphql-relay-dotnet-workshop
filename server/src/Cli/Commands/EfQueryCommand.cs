@@ -24,14 +24,9 @@ namespace Cli.Commands
                 .Select(p => p.Id)
                 .FirstOrDefaultAsync();
 
-            if (highestId == null)
+            var person = new User
             {
-                highestId = new PersonId(1);
-            }
-
-            var person = new Person
-            {
-                Id = new PersonId(highestId.Value + 1) ,
+                Id = UserIds.Generate() ,
                 Name = "mick delaney",
                 WebSite = "mickdelaney.com"
             };

@@ -5,11 +5,11 @@ using Workshop.Accounts.Api.Domain;
 
 namespace Workshop.Accounts.Api.Authorization
 {
-    public class UserAuthorizationHandler : AuthorizationHandler<PeopleRequirement, IResolverContext>
+    public class UsersAuthorizationHandler : AuthorizationHandler<PeopleRequirement, IResolverContext>
     {
-        readonly PeopleAuthorizationService _service;
+        readonly UserAuthorizationService _service;
 
-        public UserAuthorizationHandler(PeopleAuthorizationService service)
+        public UsersAuthorizationHandler(UserAuthorizationService service)
         {
             _service = service;
         }

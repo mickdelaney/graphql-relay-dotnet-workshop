@@ -1,9 +1,9 @@
 using HotChocolate.Types;
 using Workshop.Accounts.Api.Database;
-using Workshop.Accounts.Api.GraphQL.People.Queries;
+using Workshop.Accounts.Api.GraphQL.Users.Queries;
 using Workshop.Core.GraphQL.Persistence;
 
-namespace Workshop.Accounts.Api.GraphQL.People.Types
+namespace Workshop.Accounts.Api.GraphQL.Users.Types
 {
     public class UserQueriesType : ObjectTypeExtension<PeopleQueries>
     {

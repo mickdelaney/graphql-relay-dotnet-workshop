@@ -1,8 +1,8 @@
 using HotChocolate.Types;
 using Workshop.Accounts.Api.Domain;
-using Workshop.Accounts.Api.GraphQL.People.Queries;
+using Workshop.Accounts.Api.GraphQL.Users.Queries;
 
-namespace Workshop.Accounts.Api.GraphQL.People.Types
+namespace Workshop.Accounts.Api.GraphQL.Users.Types
 {
     public class UserType : ObjectType<User>
     {
@@ -13,7 +13,7 @@ namespace Workshop.Accounts.Api.GraphQL.People.Types
             descriptor
                 .ImplementsNode()
                 .IdField(t => t.Id)
-                .ResolveNode((ctx, id) => ctx.DataLoader<PersonByIdDataLoader>().LoadAsync(id, ctx.RequestAborted))
+                .ResolveNode((ctx, id) => ctx.DataLoader<UserByIdDataLoader>().LoadAsync(id, ctx.RequestAborted))
                 .Authorize("people");
 
             descriptor

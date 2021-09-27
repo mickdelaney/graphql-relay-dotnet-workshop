@@ -1,4 +1,7 @@
+using StronglyTypedIds;
+
 namespace Workshop.Accounts.Api.Domain
 {
-    public record AccountId(int Value);
+    [StronglyTypedId(converters: StronglyTypedIdConverter.SystemTextJson)] 
+    public partial struct AccountId { }
 }

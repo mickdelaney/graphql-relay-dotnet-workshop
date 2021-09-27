@@ -22,6 +22,15 @@
     <PackageReference Include="HotChocolate.Subscriptions.Redis" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="..\Shared\sharedsettings.Development.json" Link="sharedsettings.Development.json" CopyToPublishDirectory="Always" DependentUpon="sharedsettings.json" />
+    <Content Include="..\Shared\sharedsettings.Local.json" Link="sharedsettings.Local.json" CopyToPublishDirectory="Always" DependentUpon="sharedsettings.json" />
+    <Content Include="..\Shared\sharedsettings.json" Link="sharedsettings.json" CopyToPublishDirectory="Always" />
+    <Content Include="..\Shared\sharedsettings.Production.json" Link="sharedsettings.Production.json" CopyToPublishDirectory="Always" DependentUpon="sharedsettings.json" />
+    <Content Include="..\Shared\sharedsettings.Staging.json" Link="sharedsettings.Staging.json" CopyToPublishDirectory="Always" DependentUpon="sharedsettings.json" />
+    <Content Include="..\Shared\sharedsettings.Testing.json" Link="sharedsettings.Testing.json" CopyToPublishDirectory="Always" DependentUpon="sharedsettings.json" />
+  </ItemGroup>
+
   <ItemGroup Label="EntityFramework">
     <PackageReference Include="Microsoft.EntityFrameworkCore" />
   </ItemGroup>

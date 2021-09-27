@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Workshop.Conversations.Api.Core;
 using Workshop.Core.DB;
 using Workshop.Core.Framework.Settings;
 
@@ -22,6 +23,7 @@ namespace Workshop.Tests.Fixtures
             
             host.ConfigureServices((context, services) =>
             {
+                services.AddConversations(context.Configuration);
                 services.AddConnectionStrings(context.Configuration, context.HostingEnvironment.ApplicationName);
             });
             

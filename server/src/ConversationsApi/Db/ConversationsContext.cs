@@ -10,12 +10,7 @@ namespace Workshop.Conversations.Api.Db
 {
     public partial class ConversationsContext : DbContext
     {
-        public ConversationsContext()
-        {
-        }
-
-        public ConversationsContext(DbContextOptions<ConversationsContext> options)
-            : base(options)
+        public ConversationsContext(DbContextOptions<ConversationsContext> options) : base(options)
         {
         }
 

@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using Workshop.Accounts.Api.Authorization;
 using Workshop.Accounts.Api.Domain;
-using Workshop.Accounts.Api.GraphQL.People.Mutations;
-using Workshop.Accounts.Api.GraphQL.People.Queries;
-using Workshop.Accounts.Api.GraphQL.People.Types;
+using Workshop.Accounts.Api.GraphQL.Users.Mutations;
+using Workshop.Accounts.Api.GraphQL.Users.Queries;
+using Workshop.Accounts.Api.GraphQL.Users.Types;
 
-namespace Workshop.Accounts.Api.GraphQL.People
+namespace Workshop.Accounts.Api.GraphQL.Users
 {
-    public static class UserSchema
+    public static class UsersSchema
     {
         public static IRequestExecutorBuilder AddPeopleSchema
         (
@@ -18,17 +18,17 @@ namespace Workshop.Accounts.Api.GraphQL.People
         )
         {
             builder
-                .AddTypeExtension<PeopleMutations>()
-                .AddType<PersonType>()
-                .AddType<PersonFilterType>()
-                .AddType<PeopleQueriesType>()
-                .BindRuntimeType<User, PersonFilterType>()
-                .AddDataLoader<PersonByIdDataLoader>();
+                .AddTypeExtension<UserMutations>()
+                .AddType<UserType>()
+                .AddType<UserFilterType>()
+                .AddType<UserQueriesType>()
+                .BindRuntimeType<User, UserFilterType>()
+                .AddDataLoader<UserByIdDataLoader>();
 
-            services.AddSingleton<IAuthorizationHandler, PeopleAuthorizationHandler>();
-            services.AddSingleton<IAuthorizationHandler, PersonAuthorizationHandler>();
+            services.AddSingleton<IAuthorizationHandler, UsersAuthorizationHandler>();
+            services.AddSingleton<IAuthorizationHandler, UserAuthorizationHandler>();
             
-            services.AddSingleton<PeopleAuthorizationService>();
+            services.AddSingleton<UserAuthorizationService>();
 
             return builder;
         }

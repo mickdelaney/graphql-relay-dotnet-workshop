@@ -1,4 +1,8 @@
-﻿namespace Workshop.Core.EF
+﻿using System;
+using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
+
+namespace Workshop.Core.EF
 {
     public class DiagnosticObserver : IObserver<DiagnosticListener>
     {

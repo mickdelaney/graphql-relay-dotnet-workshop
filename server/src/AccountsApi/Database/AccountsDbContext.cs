@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Workshop.Accounts.Api.Domain;
 
 namespace Workshop.Accounts.Api.Database
@@ -13,29 +14,28 @@ namespace Workshop.Accounts.Api.Database
         {
         }
 
-        public DbSet<Person> People { get; set; } = default!;
+        public DbSet<User> People { get; set; } = default!;
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             modelBuilder
-                .Entity<Person>()
+                .Entity<User>()
                 .HasKey(c => c.Id);
             
             modelBuilder
-                .Entity<Person>()
+                .Entity<User>()
                 .Property(c => c.Id)
-                .HasConversion(x => MapPersonId(x), x => CreatePersonId(x));
+                .HasConversion(x => MapId(x), x => CreateId(x));
         }
         
-        
-        static PersonId CreatePersonId(int x)
+        static UserId CreateId(Guid x)
         {
-            return new PersonId(x);
+            return new UserId(x);
         }
 
-        static int MapPersonId(PersonId x)
+        static Guid MapId(UserId x)
         {
             return x.Value;
         }

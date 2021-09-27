@@ -3,13 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Workshop.Accounts.Api.Domain
 {
-    [Table("people", Schema = "accounts")]
-    public class Person
+    [Table("users", Schema = "accounts")]
+    public class User
     {
         [Required]
         [Key]
         [Column("id")]
-        public PersonId Id { get; set; }
+        public UserId Id { get; set; }
          
         [Required]
         [StringLength(200)]
@@ -20,8 +20,8 @@ namespace Workshop.Accounts.Api.Domain
         [Column("web_site")]
         public virtual string? WebSite { get; set; }
 
-        public Person() {}
-        public Person(PersonId id, string name, string? webSite)
+        public User() {}
+        public User(UserId id, string name, string? webSite)
         {
             Id = id;
             Name = name;
