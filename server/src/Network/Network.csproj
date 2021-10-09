@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <AssemblyName>Workshop.Network.Api</AssemblyName>
+        <RootNamespace>Workshop.Network.Api</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="..\Shared\sharedsettings.Development.json" Link="sharedsettings.Development.json" CopyToPublishDirectory="Always" DependentUpon="sharedsettings.json" />
+        <Content Include="..\Shared\sharedsettings.Local.json" Link="sharedsettings.Local.json" CopyToPublishDirectory="Always" DependentUpon="sharedsettings.json" />
+        <Content Include="..\Shared\sharedsettings.json" Link="sharedsettings.json" CopyToPublishDirectory="Always" />
+        <Content Include="..\Shared\sharedsettings.Production.json" Link="sharedsettings.Production.json" CopyToPublishDirectory="Always" DependentUpon="sharedsettings.json" />
+        <Content Include="..\Shared\sharedsettings.Staging.json" Link="sharedsettings.Staging.json" CopyToPublishDirectory="Always" DependentUpon="sharedsettings.json" />
+        <Content Include="..\Shared\sharedsettings.Testing.json" Link="sharedsettings.Testing.json" CopyToPublishDirectory="Always" DependentUpon="sharedsettings.json" />
+    </ItemGroup>
+
+    <ItemGroup Label="HotChocolate">
+        <PackageReference Include="HotChocolate.Data.Neo4J" />
+        <PackageReference Include="HotChocolate.Execution" />
+        <PackageReference Include="HotChocolate.Types" />
+        <PackageReference Include="HotChocolate.AspNetCore" />
+        <PackageReference Include="HotChocolate.AspNetCore.Authorization" />
+        <PackageReference Include="HotChocolate.Data" />
+        <PackageReference Include="HotChocolate.Stitching" />
+        <PackageReference Include="HotChocolate.Stitching.Redis" />
+        <PackageReference Include="HotChocolate.Subscriptions.Redis" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Neo4j.Driver" Version="4.3.2" />
+    </ItemGroup>
+
+    <ItemGroup Label="EntityFramework">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+        <PackageReference Include="EFCore.NamingConventions" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="LanguageExt.Core" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+        <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" />
+        <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="4.2.22" />
+        <PackageReference Include="NodaTime" />
+        <PackageReference Include="StronglyTypedId" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Core\Core.csproj" />
+    </ItemGroup>
+
+</Project>

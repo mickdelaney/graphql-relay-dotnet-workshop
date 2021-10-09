@@ -57,7 +57,7 @@ namespace Workshop.Content.Api
                             .PublishToRedis
                             (
                                 // The configuration name under which the schema should be published
-                                "NextGen",
+                                WorkshopConfig.PlatformName,
                                 // The connection multiplexer that should be used for publishing
                                 sp => sp.GetRequiredService<ConnectionMultiplexer>()
                             )

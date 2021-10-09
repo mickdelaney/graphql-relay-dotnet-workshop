@@ -4,14 +4,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
-using Workshop.Conversations.Api.Db;
-using Workshop.Conversations.Api.GraphQL.Conversations;
 using Workshop.Core.Config;
 using Workshop.Core.GraphQL.Config;
 
-namespace Workshop.Conversations.Api
+namespace Workshop.Calendar.Api
 {
     public class Startup
     {
@@ -19,7 +16,7 @@ namespace Workshop.Conversations.Api
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddPooledDbContextFactory<ConversationsContext>(options => 
+            services.AddPooledDbContextFactory<CalendarContext>(options => 
                 options.UseNpgsql(WorkshopConfig.PostgresConnectionString)
             );
             //
@@ -37,13 +34,12 @@ namespace Workshop.Conversations.Api
                 .AddRouting()
                 .AddGraphQLServer()
                     .AddDefaultConfig(services)
-                    .AddConversationsSchema()
                     // We configure the publish definition
                     .PublishSchemaDefinition
                     (
                         c => c
                             // The name of the schema. This name should be unique
-                            .SetName(WorkshopConfig.ConversationsSchemaName)
+                            .SetName(WorkshopConfig.CalendarSchemaName)
                             .PublishToRedis
                             (
                                 // The configuration name under which the schema should be published

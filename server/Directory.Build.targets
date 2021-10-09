@@ -1,7 +1,7 @@
 <Project>
 
   <PropertyGroup>
-    <HcVersion>12.0.0-rc.11</HcVersion>
+    <HcVersion>12.0.1</HcVersion>
     <EfCoreVersion>5.0.10</EfCoreVersion>
   </PropertyGroup>
 
@@ -14,6 +14,7 @@
     <PackageReference Update="HotChocolate.Stitching" Version="$(HcVersion)" />
     <PackageReference Update="HotChocolate.Stitching.Redis" Version="$(HcVersion)" />
     <PackageReference Update="HotChocolate.Subscriptions.Redis" Version="$(HcVersion)" />
+    <PackageReference Update="HotChocolate.Data.Neo4J" Version="$(HcVersion)" />    
   </ItemGroup>
 
   <ItemGroup Label="EntityFramework">

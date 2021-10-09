@@ -1,0 +1,109 @@
+﻿{
+   "CodeGenerationMode": 0,
+   "ContextClassName": "CalendarContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": null,
+   "ProjectRootNamespace": "Workshop.Calendar.Api",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "public.EventType",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.EventTypeCustomInput",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.ResetPasswordRequest",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.SelectedCalendar",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.Payment",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.ReminderMail",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.Credential",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public._user_eventtype",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.Team",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.Booking",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.Attendee",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.users",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.Schedule",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.VerificationRequest",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.Availability",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.Webhook",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.DailyEventReference",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.BookingReference",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.Membership",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": ".calendso",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": true,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": true,
+   "UseNullableReferences": true,
+   "UseSchemaFolders": true,
+   "UseSpatial": true
+}
