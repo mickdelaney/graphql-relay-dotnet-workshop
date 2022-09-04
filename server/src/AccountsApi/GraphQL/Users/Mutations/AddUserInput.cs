@@ -1,6 +1,6 @@
 namespace Workshop.Accounts.Api.GraphQL.Users.Mutations
 {
-    public record AddPersonInput
+    public record AddUserInput
     (
         string ClientMutationId,
         string Name,

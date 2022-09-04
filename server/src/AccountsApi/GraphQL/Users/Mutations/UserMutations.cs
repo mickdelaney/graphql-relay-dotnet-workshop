@@ -12,9 +12,9 @@ namespace Workshop.Accounts.Api.GraphQL.Users.Mutations
     public class UserMutations
     {
         [UseAccountsDbContext]
-        public async Task<AddPersonPayload> AddPersonAsync
+        public async Task<UserPayload> AddPersonAsync
         (
-            AddPersonInput input,
+            AddUserInput input,
             [ScopedService] 
             AccountsDbContext context
         )
@@ -30,7 +30,7 @@ namespace Workshop.Accounts.Api.GraphQL.Users.Mutations
             await context.SaveChangesAsync();
 
             var edge = new Edge<User>(person, person.Id.ToString());
-            return new AddPersonPayload(edge, input.ClientMutationId);
+            return new UserPayload(edge, input.ClientMutationId);
         }
     }
 }

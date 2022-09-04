@@ -4,13 +4,20 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using StackExchange.Redis;
 using Workshop.Accounts.Api.Authorization;
 using Workshop.Accounts.Api.Database;
+using Workshop.Accounts.Api.Domain;
 using Workshop.Accounts.Api.GraphQL.Users;
+using Workshop.Accounts.Api.GraphQL.Users.Mutations;
+using Workshop.Accounts.Api.GraphQL.Users.Queries;
+using Workshop.Accounts.Api.GraphQL.Users.Types;
 using Workshop.Core.Config;
 using Workshop.Core.GraphQL.Config;
+using Workshop.Core.GraphQL.Interceptors;
+using Workshop.Core.GraphQL.Logging;
 
 namespace Workshop.Accounts.Api
 {
@@ -86,17 +93,17 @@ namespace Workshop.Accounts.Api
                 .AddHttpRequestInterceptor<UserContextInterceptor>()
                 .AddQueryType(d => d.Name("Query"))
                 .AddMutationType(d => d.Name("Mutation"))
-                    .AddTypeExtension<PeopleMutations>()
-                .AddType<PersonType>()
-                .AddType<PersonFilterType>()
-                .AddType<PeopleQueriesType>()
-                .BindRuntimeType<Person, PersonFilterType>()
+                    .AddTypeExtension<UserMutations>()
+                .AddType<UserType>()
+                .AddType<UserFilterType>()
+                .AddType<UserQueriesType>()
+                .BindRuntimeType<User, UserFilterType>()
                 .AddSorting()
                 .AddFiltering()
                 .AddGlobalObjectIdentification()
                 .AddQueryFieldToMutationPayloads()
                 .AddAuthorization()
-                .AddDataLoader<PersonByIdDataLoader>()
+                .AddDataLoader<UserByIdDataLoader>()
                 .AddDiagnosticEventListener(sp =>
                 {
                     return new ConsoleQueryLogger(sp.GetApplicationService<ILogger<ConsoleQueryLogger>>());

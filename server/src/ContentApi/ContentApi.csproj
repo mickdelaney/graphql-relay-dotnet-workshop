@@ -30,7 +30,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" />
     <PackageReference Include="Microsoft.Extensions.Configuration" />
-    <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="4.2.22" />
+    <PackageReference Include="MiniProfiler.AspNetCore.Mvc" />
     <PackageReference Include="NodaTime" />
     <PackageReference Include="StronglyTypedId" />
   </ItemGroup>
