@@ -32,8 +32,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{9C3FF965
 		global.json = global.json
 		migrate.sh = migrate.sh
 		NuGet.config = NuGet.config
-		tye.yaml = tye.yaml
-		..\devops\docker-compose.yaml = ..\devops\docker-compose.yaml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cli", "src\Cli\Cli.csproj", "{E0F9DC1B-3E0F-45C1-AF7F-4C63C070D434}"

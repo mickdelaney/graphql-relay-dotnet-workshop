@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <AssemblyName>Workshop.Proxy</AssemblyName>
         <RootNamespace>Workshop.Proxy</RootNamespace>
+        <UseAppHost>false</UseAppHost>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" />
         <PackageReference Include="Microsoft.ReverseProxy" Version="1.0.0-preview.8.21065.1" />
-        <PackageReference Update="Microsoft.EntityFrameworkCore" Version="5.0.9" />
     </ItemGroup>
     
 </Project>

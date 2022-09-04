@@ -83,6 +83,29 @@ namespace Workshop.Accounts.Api
                 .AddGraphQLServer()
                 .AddDefaultConfig(services)
                 .AddPeopleSchema(services)
+                .AddHttpRequestInterceptor<UserContextInterceptor>()
+                .AddQueryType(d => d.Name("Query"))
+                .AddMutationType(d => d.Name("Mutation"))
+                    .AddTypeExtension<PeopleMutations>()
+                .AddType<PersonType>()
+                .AddType<PersonFilterType>()
+                .AddType<PeopleQueriesType>()
+                .BindRuntimeType<Person, PersonFilterType>()
+                .AddSorting()
+                .AddFiltering()
+                .AddGlobalObjectIdentification()
+                .AddQueryFieldToMutationPayloads()
+                .AddAuthorization()
+                .AddDataLoader<PersonByIdDataLoader>()
+                .AddDiagnosticEventListener(sp =>
+                {
+                    return new ConsoleQueryLogger(sp.GetApplicationService<ILogger<ConsoleQueryLogger>>());
+                })
+                .AddDiagnosticEventListener(sp =>
+                {
+                    return new MiniProfilerQueryLogger();
+                })
+                .InitializeOnStartup()
                 // We configure the publish definition
                 .PublishSchemaDefinition
                 (

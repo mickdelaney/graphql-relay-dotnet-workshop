@@ -1,10 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <AssemblyName>Workshop.Core</AssemblyName>
         <RootNamespace>Workshop.Core</RootNamespace>
         <Nullable>enable</Nullable>
+        <UseAppHost>false</UseAppHost>
     </PropertyGroup>
 
     <ItemGroup Label="HotChocolate">
@@ -19,7 +20,9 @@
     </ItemGroup>
 
     <ItemGroup Label="EntityFramework">
-        <PackageReference Include="Microsoft.EntityFrameworkCore" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore"  />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+        <PackageReference Include="EFCore.NamingConventions" />
     </ItemGroup>
     
     <ItemGroup>
