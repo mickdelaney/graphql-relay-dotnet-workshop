@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: linc-local-com-cert
+  namespace: linc
+spec:
+  secretName: linc-local-cert-secret
+  issuerRef:
+    name: local.hirelinc.com-ca-issuer
+    kind: ClusterIssuer
+  isCA: true
+  commonName: '*.hirelinc.com'
+  dnsNames:
+    - local.hirelinc.com
+    - '*.hirelinc.com'

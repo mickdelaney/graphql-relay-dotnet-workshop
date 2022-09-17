@@ -1,0 +1,1 @@
+kubectl apply -f kafka-proxy.yaml -n linc

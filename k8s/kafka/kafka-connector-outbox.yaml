@@ -1,0 +1,31 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaConnector
+metadata:
+  name: linc-kafka-connect-cluster-outbox-cloud-events
+  labels:
+    strimzi.io/cluster: linc-kafka-connect-cluster
+spec:
+  class: io.debezium.connector.postgresql.PostgresConnector
+  tasksMax: 1
+  config:
+    database.hostname: "linc-pg-primary"
+    database.port: "5432"
+    database.dbname: "linc-pg"
+    database.user: "linc-admin"
+    database.password: "iPmgpkx<uq@?rJuz^JwA[gZ_"
+    database.server.name: "linc"
+    plugin.name: "pgoutput"
+    schema.include.list: "public"
+    table.include.list : "outboxevents"
+    tombstones.on.delete : "false"
+    transforms : "outbox"
+    transforms.outbox.type : "io.debezium.transforms.outbox.EventRouter"
+    transforms.outbox.route.topic.replacement : "${routedByValue}.events"
+    transforms.outbox.table.field.event.timestamp : "timestamp"
+    transforms.outbox.table.fields.additional.placement : "type:header:eventType"
+    key.converter: "org.apache.kafka.connect.json.JsonConverter"
+    key.converter.schemas.enable: "false"
+    value.converter: "io.debezium.converters.CloudEventsConverter"
+    value.converter.schemas.enabled: "false"
+    value.converter.serializer.type : "json"
+    value.converter.json.schemas.enable : "false"

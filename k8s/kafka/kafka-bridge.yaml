@@ -1,0 +1,9 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaBridge
+metadata:
+  name: linc-kafka-bridge
+spec:
+  replicas: 1
+  bootstrapServers: linc-kafka-kafka-bootstrap:9093
+  http:
+    port: 8080

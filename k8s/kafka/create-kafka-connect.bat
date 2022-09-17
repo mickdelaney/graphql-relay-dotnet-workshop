@@ -1,0 +1,1 @@
+kubectl apply -f kafka-connect.yaml -n linc

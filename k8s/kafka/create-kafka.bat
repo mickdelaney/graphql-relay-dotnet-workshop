@@ -1,0 +1,1 @@
+kubectl apply -f kafka-persistent-single.yaml -n linc

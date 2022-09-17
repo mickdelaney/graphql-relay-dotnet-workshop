@@ -1,0 +1,38 @@
+replicaCount: 1
+persistence:
+  enabled: true
+  size: 60Gi
+  deleteEnabled: true
+  storageClass: local-path
+  existingClaim: docker-registry-pv-claim
+  
+ingress:
+  enabled: true
+  hosts:
+    - registry.your_domain
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/proxy-body-size: "30720m"
+  tls:
+    - secretName: docker-registry-prod
+      hosts:
+        - registry.your_domain
+
+storage: s3
+
+secrets:
+  htpasswd: ""
+  s3:
+    accessKey: "your_space_access_key"
+    secretKey: "your_space_secret_key"
+
+s3:
+  region: your_space_region
+  regionEndpoint: your_space_region.digitaloceanspaces.com
+  secure: true
+  bucket: your_space_name
+
+image:
+  repository: your_dockerhub_username/registry
+  tag: dev

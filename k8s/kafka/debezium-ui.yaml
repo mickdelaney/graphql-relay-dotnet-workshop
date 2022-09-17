@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: debezium-ui-service
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: debezium-ui
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: debezium-ui-service-config
+data:
+  KAFKA_CONNECT_URIS: http://linc-kafka-connect-cluster-connect-api:8083
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debezium-ui
+  labels:
+    app: debezium-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: debezium-ui
+  template:
+    metadata:
+      labels:
+        app: debezium-ui
+    spec:
+      containers:
+        - name: debezium-ui
+          image: debezium/debezium-ui
+          envFrom:
+            - configMapRef:
+                name: debezium-ui-service-config
+          ports:
+            - containerPort: 8080

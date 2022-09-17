@@ -1,0 +1,1 @@
+kubectl apply -f debezium-ui.yaml -n linc

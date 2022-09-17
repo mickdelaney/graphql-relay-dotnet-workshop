@@ -1,0 +1,41 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: docker-registry-ui
+  namespace: container-registry
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`docker-registry-ui.local.rivul.io`)
+      services:
+        - kind: Service
+          port: 80
+          name: docker-registry-ui-ui
+          namespace: container-registry
+      # No basic auth middleware is required since secrets are set up during registry creation
+      middlewares:
+        - name: docker-registry-cors
+          namespace: container-registry
+  tls:
+    secretName: local-rivul-io-tls-secret
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: docker-registry-ui-cors
+  namespace: container-registry
+spec:
+  headers:
+    accessControlAllowMethods:
+      - GET
+      - OPTIONS
+      - PUT
+      - POST
+      - DELETE
+    accessControlAllowOriginList:
+      - https://docker-registry-ui.local.rivul.io
+    accessControlAllowCredentials: true
+    accessControlMaxAge: 100
+    addVaryHeader: true

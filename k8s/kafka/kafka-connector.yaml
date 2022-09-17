@@ -1,0 +1,26 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaConnector
+metadata:
+  name: linc-kafka-connect-cluster-cloud-events
+  labels:
+    strimzi.io/cluster: linc-kafka-connect-cluster
+spec:
+  class: io.debezium.connector.postgresql.PostgresConnector
+  tasksMax: 1
+  config:
+    database.hostname: "linc-pg-primary"
+    database.port: "5432"
+    database.dbname: "linc-pg"
+    database.user: "linc-admin"
+    database.password: "iPmgpkx<uq@?rJuz^JwA[gZ_"
+    database.server.name: "linc"
+    slot.name: "linc"
+    plugin.name: "pgoutput"
+    schema.include.list: "public"
+    message.key.columns: "public.orders.customer_id"
+    key.converter: "org.apache.kafka.connect.json.JsonConverter"
+    key.converter.schemas.enable: "false"
+    value.converter: "io.debezium.converters.CloudEventsConverter"
+    value.converter.schemas.enabled: "false"
+    value.converter.serializer.type : "json"
+    value.converter.json.schemas.enable : "false"

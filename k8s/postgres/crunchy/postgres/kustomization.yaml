@@ -1,0 +1,4 @@
+namespace: linc
+
+resources:
+- postgres.yaml

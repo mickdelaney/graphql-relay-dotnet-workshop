@@ -1,0 +1,90 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: linc-kafka-proxy
+spec:
+  selector:
+    matchLabels:
+      app: linc-kafka-proxy
+  replicas: 1
+  serviceName: linc-kafka-proxy
+  template:
+    metadata:
+      labels:
+        app: linc-kafka-proxy
+    spec:
+      containers:
+        - name: linc-kafka-proxy
+          image: grepplabs/kafka-proxy:latest
+          args:
+            - "server"
+            - "--log-format=json"
+            - "--bootstrap-server-mapping=linc-kafka-kafka-bootstrap:9093,127.0.0.1:32400"
+            - "--tls-enable"
+            - "--tls-ca-chain-cert-file=/var/run/secret/kafka-ca-chain-certificate/ca-chain.cert.pem"
+            - "--tls-client-cert-file=/var/run/secret/kafka-client-certificate/client.cert.pem"
+            - "--tls-client-key-file=/var/run/secret/kafka-client-key/client.key.pem"
+            - "--tls-client-key-password=$(TLS_CLIENT_KEY_PASSWORD)"
+            - "--proxy-request-buffer-size=32768"
+            - "--proxy-response-buffer-size=32768"
+            - "--proxy-listener-read-buffer-size=32768"
+            - "--proxy-listener-write-buffer-size=131072"
+            - "--kafka-connection-read-buffer-size=131072"
+            - "--kafka-connection-write-buffer-size=32768"
+          env:
+            - name: TLS_CLIENT_KEY_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: linc-kafka-clients-ca-cert
+                  key: ca.password
+          volumeMounts:
+            - name: "tls-ca-chain-certificate"
+              mountPath: "/var/run/secret/kafka-ca-chain-certificate"
+            - name: "tls-client-cert-file"
+              mountPath: "/var/run/secret/kafka-client-certificate"
+            - name: "tls-client-key-file"
+              mountPath: "/var/run/secret/kafka-client-key"
+          ports:
+            - name: metrics
+              containerPort: 9080
+            - name: kafka-0
+              containerPort: 32400
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 9080
+            initialDelaySeconds: 5
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 9080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 2
+            failureThreshold: 5
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 1000m
+      restartPolicy: Always
+      volumes:
+        - name: tls-ca-chain-certificate
+          secret:
+            secretName: linc-kafka-cluster-ca-cert
+            items:
+              - key: ca.crt
+                path: ca-chain.cert.pem
+        - name: tls-client-cert-file
+          secret:
+            secretName: linc-kafka-clients-ca-cert
+            items:
+              - key: ca.crt
+                path: client.cert.pem
+        - name: tls-client-key-file
+          secret:
+            secretName: linc-kafka-clients-ca
+            items:
+              - key: ca.key
+                path: client.key.pem
